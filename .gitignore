@@ -1,0 +1,10 @@
+/.project
+/.settings
+/.cache
+/vendor/
+/custom/**/*
+!/custom/plugins/
+!/custom/plugins/.gitkeep
+/projects/**/*
+!/projects/.gitkeep
+/composer.lock
