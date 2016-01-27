@@ -1,4 +1,4 @@
-# implico-email
+# implico-email-framework
 
 [Smarty Template Engine][smarty] email coding framework. A kind of preprocessor that facilitates daily work with email templates.
 
@@ -266,7 +266,11 @@ All most recent options are described in the master file. You can change (among 
 ## Examples
 
 ### Starting a new project
-Just copy a project from the `samples` directory. Usually you will probably need the `plain` example.
+Just copy a project from the `samples` to your `projects` directory and change its name. Usually you will probably need the `plain` example. Run compiler in the watch mode:
+```
+php email.php compile project_name -w
+```
+Open the script HTML file located in your project `outputs` directory. Refresh on every compilation to see the changes.
 
 ### Plain
 This is a plain, bootstrap project. Includes only a layout with the main table defined.
