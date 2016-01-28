@@ -8,7 +8,7 @@
  * 
 */
 
-namespace ImplicoEmail;
+namespace Implico\Email;
 
 
 class Config implements \ArrayAccess

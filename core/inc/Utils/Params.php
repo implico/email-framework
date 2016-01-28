@@ -1,6 +1,6 @@
 <?php
 
-namespace ImplicoEmail\Utils;
+namespace Implico\Email\Utils;
 
 /*
  * Params, Parameter Container - klasa obslugi parametrow metod

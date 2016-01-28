@@ -15,7 +15,7 @@
 	
 	"autoload": {
 		"psr-4": {
-			"ImplicoEmail\\": "core/inc/"
+			"Implico\\Email\\": "core/inc/"
 		}
 	}
 }

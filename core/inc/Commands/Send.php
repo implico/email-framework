@@ -8,7 +8,7 @@
  * 
 */
 
-namespace ImplicoEmail\Commands;
+namespace Implico\Email\Commands;
 
 
 use Symfony\Component\Console\Command\Command;
@@ -116,7 +116,7 @@ class Send extends Command
 		
 		//get project name & set source/output dirs
 		$project = $input->getArgument('project');
-		$this->config = new \ImplicoEmail\Config($project, $input->getOption('dir'));
+		$this->config = new \Implico\Email\Config($project, $input->getOption('dir'));
 		
 		if ($error = $this->config->getErrors()) {
 			switch ($error) {
@@ -145,7 +145,7 @@ class Send extends Command
 		$script = $input->getOption('script');
 		
 		
-		$sender = new \ImplicoEmail\Sender(
+		$sender = new \Implico\Email\Sender(
 			$this->config, $script, $input->getOption('toaddress'), $input->getOption('toaddressfn') ? ($this->config['senderDir'] . $input->getOption('toaddressfn')) : '', 
 			$input->getOption('fromname'), 
 			$input->getOption('fromaddress'), $input->getOption('subject'), $input->getOption('minified'),

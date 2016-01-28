@@ -109,4 +109,13 @@ MOBILE TARGETING
 }
 /* end Android targeting */
 
+
+
+/* Responsive sample code */
+@media only screen and (min-width: 600px) {
+	#main-table { 
+		width: 600px !important;
+	}
+}
+
 {/literal}

@@ -282,13 +282,13 @@ This shows how to build more complex projects, including lists and buttons.
 Presents the way to build a responsive (in fact - fluid) project. Notes:
 - config option `lContentWidth` is set to 100%
 - layout template:
-  - CSS styles include is uncommented, mainly for Apple devices that support media queries
+  - CSS styles include is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)
   - added max-width to the main table (for e.g. Gmail)
 - all width units (tables, cells, images) are set in percentage
 
 ### Multilang
-Multi-language project, presents two ways of defining language-specific content for English and Polish. The concept is that you extend `script.tpl` by language scripts, in this case `en.tpl` and `pl.tpl`.
+Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that you extend `script.tpl` by language scripts, in this case `en.tpl` and `pl.tpl`.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
 
@@ -310,7 +310,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
     
     "autoload": {
       "psr-4": {
-        "ImplicoEmail\\": "path_to_core_inc_dir"
+        "Implico\\Email\\": "path_to_core_inc_dir"
       }
     }
   }

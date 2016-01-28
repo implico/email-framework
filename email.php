@@ -39,6 +39,6 @@ use Symfony\Component\Console\Application;
 
 
 $app = new Application('Implico Email Framework', '0.0.1');
-$app->add(new \ImplicoEmail\Commands\Compile());
-$app->add(new \ImplicoEmail\Commands\Send());
+$app->add(new \Implico\Email\Commands\Compile());
+$app->add(new \Implico\Email\Commands\Send());
 $app->run();

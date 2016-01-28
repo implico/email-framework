@@ -8,9 +8,9 @@
  * 	
 */
 
-namespace ImplicoEmail\Commands;
+namespace Implico\Email\Commands;
 
-use ImplicoEmail\Utils\Smarty as SmartyUtils;
+use Implico\Email\Utils\Smarty as SmartyUtils;
 
 
 use Symfony\Component\Console\Command\Command;
@@ -73,7 +73,7 @@ class Compile extends Command
 	{
 		//get project name & set source/output dirs
 		$project = $input->getArgument('project');
-		$this->config = new \ImplicoEmail\Config($project, $input->getOption('dir'));
+		$this->config = new \Implico\Email\Config($project, $input->getOption('dir'));
 		
 		if ($error = $this->config->getErrors()) {
 			switch ($error) {
@@ -120,6 +120,8 @@ class Compile extends Command
 		$smarty->compile_check = false;
 		$smarty->force_compile = true;
 		$smarty->error_reporting = E_ALL;
+
+		$smarty->registerClass('SmartyUtils', 'Implico\Email\Utils\Smarty');
 		
 		//set directories
 		$smarty->setTemplateDir(array(

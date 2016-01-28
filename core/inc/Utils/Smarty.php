@@ -1,6 +1,6 @@
 <?php
 
-namespace ImplicoEmail\Utils;
+namespace Implico\Email\Utils;
 
 class Smarty
 {
@@ -9,6 +9,11 @@ class Smarty
   public static function init($config)
   {
     self::$config = $config;
+  }
+
+  public static function removeCssComments($content)
+  {
+    return preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!' , '' , $content);
   }
 
   public static function getAttrs($id = '', $class = '', $attrs = '')

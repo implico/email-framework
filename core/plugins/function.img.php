@@ -9,8 +9,8 @@
  * -------------------------------------------------------------
  */
 
-use ImplicoEmail\Utils\Smarty as SmartyUtils;
-use ImplicoEmail\Utils\Params;
+use Implico\Email\Utils\Smarty as SmartyUtils;
+use Implico\Email\Utils\Params;
 
 function smarty_function_img($params, Smarty_Internal_Template $template)
 {
