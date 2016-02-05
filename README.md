@@ -298,7 +298,7 @@ Second way is to inject content by using blocks in language scripts.
 
 
 <br>
-## Standalone version
+## Integration
 To use the framework in your own PHP scripts, install it in the standard way and then:
 - update or create your [Composer][composer] config file (`composer.json`):
   ```json
@@ -337,6 +337,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
   $smarty->configLoad(path_to_config_file2);
   ```
 - set directories the templates are referring to, like this:
+
   ```php
   $smarty->setTemplateDir(array(
     0 => path_to_project,
