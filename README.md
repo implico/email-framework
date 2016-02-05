@@ -146,6 +146,7 @@ Options:
 - `--errorstop`: quits on error
 
 
+<br>
 ## Directory structure
 
 The framework directory structure overview:
@@ -163,6 +164,7 @@ The framework directory structure overview:
 - `vendor`: modules installed with [Composer][composer]
 
 
+<br>
 ## Plugin reference
 
 Reference scheme:

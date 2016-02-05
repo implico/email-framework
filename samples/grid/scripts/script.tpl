@@ -21,7 +21,7 @@
 	{tr}
 		{td}
 			
-			{table cellpadding="4" align="center" width=false}
+			{table cellpadding="4" width=false}
 				
 				{tr}
 					{td width=100 align=left padding="4px"}

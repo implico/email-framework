@@ -56,7 +56,7 @@
 			
 			{tr}
 				{$height = 30}
-				{td valign="middle" align="center" colspan="3" width=#lWidth# height=$height bgcolor="#f4f2ef"}
+				{td valign="middle" colspan="3" width=#lWidth# height=$height bgcolor="#f4f2ef"}
 					{font color="#c3c1c1" size="11"}Aliquam sem. In hendrerit nulla quam nunc {/font}
 					{a href="" textDecoration="none"}{font color="#c3c1c1" size="11"}sample.com{/font}{/a}{font color="#c3c1c1" size="11"}. {/font}
 					{font color="#c3c1c1" size="11"}In hendrerit, {/font} 
