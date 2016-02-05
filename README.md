@@ -6,6 +6,7 @@
 
 When developing an email template, you often face issues such as:
 - setting the same (often prehistoric) attributes and css properties across the whole project like:
+
   ```html
   <table width="600" cellpadding="0" cellspacing="0" border="0">
     <tr>
