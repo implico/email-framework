@@ -42,6 +42,10 @@ The framework brings configured Smarty plugins and CLI interface, so you can dev
     {/td}
   {/tr}
 {/table}
+
+<p>
+  Of course, you can use your own markup or easily create own Smarty plugins, like {literal}{h1}Header{/h1}{/literal}.
+</p>
 ```
 
 And run the watcher:
@@ -81,6 +85,11 @@ The code is converted (may vary according to the current settings) to:
         </td>
       </tr>
     </table>
+    
+    <p>
+      Of course, you can use your own markup or easily create own Smarty plugins, like {h1}Header{/h1}.
+    </p>
+        
   </body>
 </html>
 ```
