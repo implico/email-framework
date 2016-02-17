@@ -76,7 +76,7 @@ The code is converted (may vary according to the current settings) to:
         </td>
         <td width="200" valign="top" align="left" style="padding:0 0 0 10px;">
           <b>
-            <font color="#000000" size="3" face="Arial,Tahoma,sans-serif" style="font-size:13px;"></font>
+            <font color="#000000" size="3" face="Arial,Tahoma,sans-serif" style="font-size:13px;">This content is set in the configuration file</font>
           </b>
         </td>
       </tr>
@@ -177,9 +177,9 @@ Reference scheme:
 ```
 
 Where:
-- parameter1 is set to 0
-- parameter2 is set to configuration value `config_value`
-- parameter3 is not displayed
+- `parameter1` is set to `0`
+- `parameter2` is set to configuration value `config_value`
+- `parameter3` is not displayed
 
 Attribute names which are equal to the HTML ones are not camelCase (like `cellpadding`, `bordercolor`), others like `lineHeight` are.
 
@@ -213,7 +213,7 @@ Specify width, height, font sizes without units.
 Notes:
 - `padding`: set as a CSS `padding` property value, e.g. `10px 20px`
 - `noFont`: blocks applying font styles even if `fontStyleTdTag` config value is set to `true`
-- `overflow`: set to true for `hidden` (shorthand)
+- `overflow`: set to `true` for `hidden` (shorthand)
 
 ### Vertical margin (function)
 Creates a row with specified height.
@@ -243,7 +243,6 @@ Notes:
 {img src="" width=false height=false autoSize=#imgAutoSize# alt=false padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
 ```
 Notes:
-- `srcPrepend`: a string (URL fragment) prepended to src
 - `autoSize`: if true, when width and height is not specified, actual image dimensions are taken
 - `marginV` and `marginH`: vertical and horizontal margin (setting vspace and hspace attributes + CSS margin)
 
