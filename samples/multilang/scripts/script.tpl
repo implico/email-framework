@@ -3,7 +3,7 @@
   {table}
     {tr}
       {td}
-        {font size=30 weight=bold}{#title#}{/font}
+        {font size=30 bold=1}{#title#}{/font}
       {/td}
     {/tr}
   {/table}

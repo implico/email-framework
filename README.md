@@ -14,8 +14,9 @@ When developing an email template, you often face issues such as:
         <img src="image.jpg" width="400" height="300" alt="Image" border="0" style="display: block">
   ```
 - using `font` tag unconveniently
-- having multiple language versions for one layout
-- using same values across whole project (widths etc.) - that could be accessed as variables
+- setting `img` sizes manually
+- having multiple language versions (or other small differences between templates) for one layout
+- using same values across whole project (widths etc.) - that could be accessed as variables (and in some cases could also take a default configuration value when not set, like font parameters)
 
 Produced code is often hard to maintain.
 
@@ -37,7 +38,7 @@ The framework brings configured Smarty plugins and CLI interface, so you can dev
       {a href="http://example.com/"}{img src="image.jpg"}{/a}
     {/td}
     {td width=200 align=left padding="0 0 0 10px"}
-      {font weight=bold}{#configVariable#}{/font}
+      {font bold=true}{#configVariable#}{/font}
     {/td}
   {/tr}
 {/table}
@@ -52,34 +53,36 @@ php email.php compile [project_name] -w
 
 The code is converted (may vary according to the current settings) to:
 ```html
-<table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-  <tr>
-    <td width="600" valign="top" align="left">
-      <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-        <tr>
-          <td width="600" colspan="2" valign="top" align="center">
-            <font color="#000000" size="5" face="Arial,Tahoma,sans-serif" style="font-size:20px;">Title</font>
-          </td>
-        </tr>
-        <tr>
-          <td height="50" colspan="2" style="font-size:1px;">&nbsp;</td>
-        </tr>
-        <tr>
-          <td width="400" valign="top" align="center">
-            <a href="" style="text-decoration:none;text-decoration:none !important;">
-              <img src="image.jpg" width="400" height="300" vspace="0" hspace="0" border="0" style="display:block;margin:0;" />
-            </a>
-          </td>
-          <td width="200" valign="top" align="left" style="padding:0 0 0 10px;">
-            <b>
-              <font color="#000000" size="3" face="Arial,Tahoma,sans-serif" style="font-size:13px;">This content is set in the config file</font>
-            </b>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css"> #outlook a {padding:0;} body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;} .ExternalClass {width:100%;} .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;} table td {border-collapse: collapse;} </style>
+  </head>
+  <body>
+    <table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+      <tr>
+        <td width="600" colspan="2" valign="top" align="center">
+          <font color="#000000" size="5" face="Arial,Tahoma,sans-serif" style="font-size:20px;">Title</font>
+        </td>
+      </tr>
+      <tr>
+        <td height="50" colspan="2" style="font-size:1px;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="400" valign="top" align="center">
+          <a href="http://example.com/" style="text-decoration:none;text-decoration:none !important;">
+            <img src="image.jpg" width="400" height="200" vspace="0" hspace="0" border="0" style="display:block;margin:0;border:none;outline:none; text-decoration:none;-ms-interpolation-mode:bicubic;" />
+          </a>
+        </td>
+        <td width="200" valign="top" align="left" style="padding:0 0 0 10px;">
+          <b>
+            <font color="#000000" size="3" face="Arial,Tahoma,sans-serif" style="font-size:13px;"></font>
+          </b>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
 ```
 
 
@@ -221,12 +224,10 @@ Creates a row with specified height.
 
 ### Font
 ```smarty
-{font color=#fontColor# size=#fontSize# family=#fontFamily# weight=false style=false cssStyle=false id=false class=false attrs=false}
+{font color=#fontColor# size=#fontSize# family=#fontFamily# bold=false italic=false underlined=false centered=false style=false id=false class=false attrs=false}
 ```
 Notes:
-- `weight`: set to true for `bold` (shorthand)
-- `style`: set to true for `italic` (shorthand)
-- `cssStyle`: standard additional styles (defined as `styles` in other plugins)
+- `bold`, `italic`, `underlined`, `centered`: have aliases derived from the first letter; set any truthy value, like `{font b=1}`
 
 
 ### Link
@@ -239,7 +240,7 @@ Notes:
 
 ### Image (function)
 ```smarty
-{img src="" srcPrepend=#imgSrcPrepend# width=false height=false autoSize=#imgAutoSize# alt=false padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
+{img src="" width=false height=false autoSize=#imgAutoSize# alt=false padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
 ```
 Notes:
 - `srcPrepend`: a string (URL fragment) prepended to src
@@ -285,13 +286,13 @@ This shows how to build more complex projects, including lists and buttons.
 Presents the way to build a responsive (in fact - fluid) project. Notes:
 - config option `lContentWidth` is set to 100%
 - layout template:
-  - CSS styles include is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
+  - `meta `&lt;name="viewport"&gt;` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)
   - added max-width to the main table (for e.g. Gmail)
 - all width units (tables, cells, images) are set in percentage
 
 ### Multilang
-Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that you extend `script.tpl` by language scripts, in this case `en.tpl` and `pl.tpl`.
+Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that `script.tpl` is extended by language scripts, in this case `en.tpl` and `pl.tpl`.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
 
@@ -384,8 +385,26 @@ To use the framework in your own PHP scripts, install it in the standard way and
   Replace `path_to_images_dir` with the actual path.
 
 
-[smarty]: http://www.smarty.net/
-[php]: http://www.php.net/
+
+<br>
+## TODO
+- integration with [gulp] for watch and use one of available modules
+
+
+
+<br>
+## Alternatives
+Take a look at other interesting tools and frameworks:
+- [MJML][mjml]
+- [Node Email Templates](https://github.com/niftylettuce/node-email-templates)
+- other [nodeJS modules](https://www.npmjs.com/browse/keyword/premailer)
+
+
+
 [composer]: https://getcomposer.org/
+[gulp]: http://gulpjs.com/
+[mjml]: https://mjml.io/
+[php]: http://www.php.net/
 [phpmailer]: https://github.com/PHPMailer/PHPMailer
+[smarty]: http://www.smarty.net/
 [swiftmailer]: http://swiftmailer.org/

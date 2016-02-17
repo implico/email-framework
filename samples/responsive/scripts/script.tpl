@@ -6,7 +6,7 @@
     {/td}
     
     {td width="98%"}
-      {table width="100%"}
+      {table}
         {tr}
           {$imgHeight = 250}
           {td width="49%"}
@@ -24,7 +24,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -34,7 +34,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -88,7 +88,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -98,7 +98,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -156,7 +156,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -166,7 +166,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -220,7 +220,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -230,7 +230,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -288,7 +288,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -298,7 +298,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -352,7 +352,7 @@
                       Shoes
                     {/font}
                     #(/strip) #(strip)
-                      {font size=15 color="#671d2c" weight=bold}
+                      {font size=15 color="#671d2c" bold=1}
                         Marilyn Monroe
                       {/font}
                   {/a}
@@ -362,7 +362,7 @@
               
               {tr}
                 {td align=center}
-                  {font size=18 color="#671d2c" weight=bold}
+                  {font size=18 color="#671d2c" bold=1}
                     $9 999
                   {/font}
                 {/td}
@@ -415,7 +415,7 @@
   {tr}
     {$h = 22}
     {td colspan=3}
-      {table width="100%"}
+      {table}
         {tr}
           {td width="2%" height=$h}&nbsp;{/td}
           {td width="96%" valign=top height=$h}
@@ -429,7 +429,7 @@
   
   {tr}
     {td colspan=3}
-      {table width="100%"}
+      {table}
         {tr}
           {td width="49%"}
             {a href=""}{img src="featured.jpg" alt="Buy now" width="100%"}{/a}

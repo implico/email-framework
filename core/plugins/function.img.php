@@ -101,13 +101,14 @@ function smarty_function_img($params, Smarty_Internal_Template $template)
     }
   }
   else {
-    if ($repeatCss) {
+    //if ($repeatCss) {
       $ret .= 'border:none;';
-    }
+    //}
   }
+  $ret .= 'outline:none; text-decoration:none;';
 
   if ($smarty->getConfigVars('outlookCss')) {
-    $ret .= '-ms-interpolation-mode:bicubic;mso-line-height-rule:exactly;';
+    $ret .= '-ms-interpolation-mode:bicubic;';
   }
 
   if ($par['style']) {

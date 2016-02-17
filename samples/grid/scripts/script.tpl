@@ -1,7 +1,7 @@
 {extends "[layouts]layout.tpl"}{block script}
 	{tr}
 		{td}
-			{font size=32 weight=bold}{#title#}{/font}
+			{font size=32 bold=1}{#title#}{/font}
 		{/td}
 	{/tr}
 	
@@ -66,7 +66,7 @@
 	
 	{tr}
 		{td}
-			{font size=15 weight=bold}
+			{font size=15 bold=1}
 				Cum sociis natoque penatibus et ultrices volutpat...
 			{/font}
 		{/td}
@@ -78,7 +78,7 @@
 		{td}
 			{table}
 				{tr}
-					{td width="240"}
+					{td width=240}
 
 
 						{* Buttons *}
@@ -109,7 +109,7 @@
 					{/td}
 					
 					
-					{td width="300" align="left" lineHeight="1.5"}
+					{td width=300 align=left lineHeight="20px"}
 					
 						{font}
 							Lorem ipsum dolor sit amet enim. Etiam ullamcorper a pellentesque dui:<br />
@@ -145,7 +145,7 @@
 									{font size=12}&bull;{/font}
 								{/td}
 								{td width=280 align=left}
-									{font size=12 weight=bold}Curabitur et ligula!{/font}
+									{font size=12 b=1}Curabitur et ligula!{/font}
 								{/td}
 							{/tr}
 						{/table}

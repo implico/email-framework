@@ -9,12 +9,12 @@
 			<title>{#title#|escape}</title>
 		{/if}
 		
-		{* responsive: styles *}
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<style type="text/css">
-			{include file="[styles]layout.css" assign=styles}
-			{SmartyUtils::removeCssComments($styles)|strip}
-		</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <style type="text/css">
+      {include file="[styles]layout.css" assign=styles}
+      {SmartyUtils::removeCssComments($styles)|strip}
+    </style>
 
 	</head>
 
@@ -28,7 +28,7 @@
 		            <![endif]-->
 
 
-		{table width="100%" style="max-width:"|cat:#lWidth#|cat:"px" id="main-table" class="main-table"}
+		{table style="max-width:"|cat:#lWidth#|cat:"px" id="main-table" class="main-table"}
 
 
 			{tr}
@@ -47,7 +47,7 @@
 			{tr}
 				{td align="left"}
 				
-					{table width="100%"}
+					{table}
 						{tr}
 							{$h = 20}
 							{td width="5%" height=$h}
@@ -99,9 +99,9 @@
 			{margin height=35}
 			
 			{tr}
-				{td align="left" width=#mMiddleWidth#}
+				{td align="left"}
 				
-					{table width="100%"}
+					{table}
 					
 						{block script}{/block}
 						
@@ -116,7 +116,7 @@
 			{tr}
 				{$h = 20}
 				{td}
-					{table width="100%"}
+					{table}
 						{tr}
 							{td width="2%" height=$h}&nbsp;{/td}
 							{td width="96%" height=$h}
@@ -130,12 +130,12 @@
 			
 			{tr}
 				{td}
-					{table width="100%" bgcolor="#3c618e"}
+					{table bgcolor="#3c618e"}
 						{$h = 40}
 						{tr}
 							{td width="43%" valign=middle height=$h align=right lineHeight="12px"}
 								{a href=""}
-									{font size=12 weight=bold color="#ffffff"}
+									{font size=12 bold=1 color="#ffffff"}
 										Over&nbsp;1000&nbsp;fans
 									{/font}
 								{/a}
@@ -153,7 +153,7 @@
 							{/td}
 							{td width="50%" valign=middle height=$h align=left lineHeight="12px"}
 								{a href=""}
-									{font size=12 weight=bold color="#ffffff"}
+									{font size=12 bold=1 color="#ffffff"}
 										VISIT&nbsp;OUR&nbsp;FACEBOOK&nbsp;&gt;&gt;
 									{/font}
 								{/a}
@@ -169,7 +169,7 @@
 				{td lineHeight="12px"}
 					{font size=9 color="#7d7d7d"}
 						Lorem ipsum dolor sit amet sapien tristique senectus et turpis. Nullam eros egestas dignissim.  <br />
-						e-mail:{/font}{a href="mailto:mail@mail.com"}#(strip){font size=9 color="#3000f0" decoration="underline"}mail@mail.com{/font}{/a}{font size=8 color="#7d7d7d"},#(/strip) tel.: +00 00 11 22 33 444
+						e-mail:{/font}{a href="mailto:mail@mail.com"}#(strip){font size=9 color="#3000f0" underlined=1}mail@mail.com{/font}{/a}{font size=8 color="#7d7d7d"},#(/strip) tel.: +00 00 11 22 33 444
 					{/font}
 				{/td}
 			{/tr}
@@ -184,14 +184,14 @@
 			
 			{tr}
 				{td}
-					{table width="100%"}
+					{table}
 						{tr}
 							{td width="2%"}&nbsp;{/td}
 							{td width="96%" valign=top lineHeight="12px"}
 								{font size=9 color="#7d7d7d"}
 									Lorem ipsum dolor sit amet sapien tristique senectus et turpis. <br />
 									Nullam eros egestas dignissim, sapien auctor congue eu, iaculis leo, in augue. Maecenas gravida, #(strip)
-									{/font}{a href=""}{font size=9 color="#3000f0" decoration="underline"}unsubscribe link{/font}{/a}{font size=8 color="#7d7d7d"}#(/strip).
+									{/font}{a href=""}{font size=9 color="#3000f0" underlined=1}unsubscribe link{/font}{/a}{font size=8 color="#7d7d7d"}#(/strip).
 								{/font}
 							{/td}
 							{td width="2%"}&nbsp;{/td}

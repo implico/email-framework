@@ -26,10 +26,15 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       'color' => $smarty->getConfigVars('fontColor'),
       'size' => $smarty->getConfigVars('fontSize'),
       'family' => $smarty->getConfigVars('fontFamily'),
-      'weight' => false,
-      'style' => false,
-      'cssStyle' => false,
-      'decoration' => false,
+      'bold' => false,
+      'b' => false,	//alias for bold
+  		'italic' => false,
+  		'i' => false,	//alias for italic
+  		'underlined' => false,
+  		'u' => false,	//alias for underlined
+  		'centered' => false,
+  		'c' => false,	//alias for centered
+  		'style' => false,
       'lineHeight' => false,
       'forceCss' => false
     ]
@@ -50,21 +55,11 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
 
       $setCss = $setCss || !$smarty->getConfigVars('fontStyleTdTag');
 
-      //shorthand
-      if ($par['weight'] === true) {
-        $par['weight'] = 'bold';
-      }
-      if ($par['style'] === true) {
-        $par['style'] = 'italic';
-      }
-      if ($par['decoration'] === true) {
-        $par['decoration'] = 'underline';
-      }
-
-      $isBold = $par['weight'] == "bold";
-      $isItalic = $par['style'] == "italic";
-      $isUnderlined = $par['decoration'] == "underline";
-
+      $isBold = ($par['bold'] !== false) || ($par['b'] !== false);
+      $isItalic = ($par['italic'] !== false) || ($par['i'] !== false);
+      $isUnderlined = ($par['underlined'] !== false) || ($par['u'] !== false);
+      $isCentered = ($par['centered'] !== false) || ($par['c'] !== false);
+      
 
       $css = "";
       $css .= SmartyUtils::addCss('font-size', $par['size'] . 'px');
@@ -87,6 +82,8 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
         $cssFont .= $prop;
       }
 
+      if ($isCentered)
+        $ret .= '<center>';
       if ($isBold)
         $ret .= '<b>';
       if ($isItalic)
@@ -119,7 +116,9 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
         $ret .= '</i>';
       if ($isBold)
         $ret .= '</b>';
-
+      if ($isCentered)
+        $ret .= '</center>';
+      
 
       return $ret;
     }

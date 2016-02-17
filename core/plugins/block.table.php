@@ -70,9 +70,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
         }
       }
 
-      if ($repeatCss) {
-        $style .= 'border-collapse:collapse;';
-      }
+      $style .= 'border-collapse:collapse;';
       
       if ($smarty->getConfigVars('outlookCss')) {
         $style .= "mso-table-lspace:0pt;mso-table-rspace:0pt;";

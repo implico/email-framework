@@ -76,7 +76,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
         $style .= SmartyUtils::addCss('text-align', $par['align']);
       }
 
-      if ($smarty->getConfigVars('outlookCss')) {
+      if ($smarty->getConfigVars('outlookCss') && ($par['lineHeight'] !== false)) {
         $style .= "mso-line-height-rule:exactly;";
       }
 

@@ -11,11 +11,12 @@
 		
 		{* uncomment if responsive
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<style type="text/css">
-				{include file="[styles]layout.css" assign=styles}
-				{SmartyUtils::removeCssComments($styles)|strip}
-			</style>
-		*}
+    *}
+    
+		<style type="text/css">
+			{include file="[styles]layout.css" assign=styles}
+			{SmartyUtils::removeCssComments($styles)|strip}
+		</style>
 
 	</head>
 
@@ -52,7 +53,7 @@
 				{/td}
 			{/tr}
 			
-			{margin height=10 width=#lWidth# colspan=3 bgcolor="#f4f2ef"}
+			{margin height=10 colspan=3 bgcolor="#f4f2ef"}
 			
 			{tr}
 				{$height = 30}

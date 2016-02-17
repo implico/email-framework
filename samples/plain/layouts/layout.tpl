@@ -9,13 +9,14 @@
 			<title>{#title#|escape}</title>
 		{/if}
 		
-		{* uncomment if responsive
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<style type="text/css">
-				{include file="[styles]layout.css" assign=styles}
-				{SmartyUtils::removeCssComments($styles)|strip}
-			</style>
-		*}
+    {* uncomment if responsive
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    *}
+    
+    <style type="text/css">
+      {include file="[styles]layout.css" assign=styles}
+      {SmartyUtils::removeCssComments($styles)|strip}
+    </style>
 
 	</head>
 
