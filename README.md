@@ -75,7 +75,7 @@ The code is converted (may vary according to the actual settings) to:
       <tr>
         <td width="400" valign="top" align="center">
           <a href="http://example.com/" style="text-decoration:none;text-decoration:none !important;">
-            <img src="image.jpg" width="400" height="200" vspace="0" hspace="0" border="0" style="display:block;margin:0;border:none;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
+            <img src="image.jpg" width="400" height="200" alt="Click Show Images option to see the picture" vspace="0" hspace="0" border="0" style="display:block;margin:0;border:none;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
           </a>
         </td>
         <td width="200" valign="top" align="left" style="padding:0 0 0 10px;">
