@@ -24,7 +24,7 @@
 		{table width=#lWidth#}
 			{tr}
 				{td valign="top" align="left" colspan="3" width=#lWidth# lineHeight="1"}
-					{a href=""}{img src="top.jpg" alt="Logo" id="logo"}{/a}
+					{a href=""}{img src="top.jpg" id="logo"}{/a}
 				{/td}
 			{/tr}
 			{tr}
@@ -68,7 +68,7 @@
 			{tr}
 				{$height = 10}
 				{td valign="top" align="left" colspan="3" width=#lWidth# height=$height bgcolor="#fff"}
-					{img src="bottom.jpg" alt="" width=#lWidth# height=$height}
+					{img src="bottom.jpg" alt=false width=#lWidth# height=$height}
 				{/td}
 			{/tr}
 			

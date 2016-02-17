@@ -55,7 +55,7 @@ php email.php compile [project_name] -w
 
 <br>
 
-The code is converted (may vary according to the current settings) to:
+The code is converted (may vary according to the actual settings) to:
 ```html
 <html>
   <head>
@@ -75,7 +75,7 @@ The code is converted (may vary according to the current settings) to:
       <tr>
         <td width="400" valign="top" align="center">
           <a href="http://example.com/" style="text-decoration:none;text-decoration:none !important;">
-            <img src="image.jpg" width="400" height="200" vspace="0" hspace="0" border="0" style="display:block;margin:0;border:none;outline:none; text-decoration:none;-ms-interpolation-mode:bicubic;" />
+            <img src="image.jpg" width="400" height="200" vspace="0" hspace="0" border="0" style="display:block;margin:0;border:none;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" />
           </a>
         </td>
         <td width="200" valign="top" align="left" style="padding:0 0 0 10px;">
@@ -87,7 +87,7 @@ The code is converted (may vary according to the current settings) to:
     </table>
     
     <p>
-      Of course, you can use your own markup or easily create own Smarty plugins, like {h1}Header{/h1}.
+      Of course, you can use your own markup or easily create custom Smarty plugins, like {h1}Header{/h1}.
     </p>
         
   </body>
@@ -249,7 +249,7 @@ Notes:
 
 ### Image (function)
 ```smarty
-{img src="" width=false height=false autoSize=#imgAutoSize# alt=false padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
+{img src="" width=false height=false autoSize=#imgAutoSize# alt=#imgAlt# padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
 ```
 Notes:
 - `autoSize`: if true, when width and height is not specified, actual image dimensions are taken

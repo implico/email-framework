@@ -28,7 +28,7 @@ function smarty_function_img($params, Smarty_Internal_Template $template)
       'width' => false,
       'height' => false,
       'autoSize' => $smarty->getConfigVars('imgAutoSize'),
-      'alt' => false,
+      'alt' => $smarty->getConfigVars('imgAlt'),
 
       'padding' => false,
       'margin' => '0',
@@ -105,7 +105,7 @@ function smarty_function_img($params, Smarty_Internal_Template $template)
       $ret .= 'border:none;';
     //}
   }
-  $ret .= 'outline:none; text-decoration:none;';
+  $ret .= 'outline:none;text-decoration:none;';
 
   if ($smarty->getConfigVars('outlookCss')) {
     $ret .= '-ms-interpolation-mode:bicubic;';
