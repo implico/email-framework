@@ -388,7 +388,10 @@ To use the framework in your own PHP scripts, install it in the standard way and
 
 <br>
 ## TODO
-- integration with [gulp] for watch and use one of available modules
+Integration with [gulp] for:
+- more optimized watch
+- auto-refresh by [Browsersync](https://www.browsersync.io/)
+- use one of other available modules
 
 
 
