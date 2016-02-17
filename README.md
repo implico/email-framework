@@ -388,7 +388,10 @@ To use the framework in your own PHP scripts, install it in the standard way and
 
 <br>
 ## TODO
-- integration with [gulp] for watch and use one of available modules
+Integration with [gulp] for:
+- more optimized watch
+- auto-refresh by [Browsersync](https://www.browsersync.io/)
+- use one of other available tools (like CSS inliners)
 
 
 
@@ -397,7 +400,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
 Take a look at other interesting tools and frameworks:
 - [MJML][mjml]
 - [Node Email Templates](https://github.com/niftylettuce/node-email-templates)
-- other [nodeJS modules](https://www.npmjs.com/browse/keyword/premailer)
+- some [nodeJS modules](https://www.npmjs.com/browse/keyword/premailer)
 
 
 
