@@ -294,7 +294,7 @@ This shows how to build more complex projects, including lists and buttons.
 Presents the way to build a responsive (in fact - fluid) project. Notes:
 - config option `lContentWidth` is set to 100%
 - layout template:
-  - `meta `&lt;name="viewport"&gt;` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
+  - `<meta name="viewport">` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)
   - added max-width to the main table (for e.g. Gmail)
 - all width units (tables, cells, images) are set in percentage
