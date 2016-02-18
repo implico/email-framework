@@ -44,7 +44,7 @@ The framework brings configured Smarty plugins and CLI interface, so you can dev
 {/table}
 
 <p>
-  Of course, you can use your own markup or easily create own Smarty plugins, like {literal}{h1}Header{/h1}{/literal}.
+  Of course, you can use your own markup or easily create custom Smarty plugins, like {literal}{h1}Header{/h1}{/literal}.
 </p>
 ```
 
