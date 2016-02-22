@@ -107,7 +107,7 @@ To use the framework you need the following software:
 
 ### Example: PHP installation on Windows
 
-- unpack the downloaded archive into `c:\PHP`
+- unpack the [downloaded archive](http://windows.php.net/download/) (e.g. PHP 7.x Non Thread Safe Zip) into `c:\PHP`
 - add `c:\PHP` to your PATH environment variable
 - edit `c:\PHP\php.ini`, uncomment:
   - `extension_dir = "ext"`
@@ -241,7 +241,7 @@ Notes:
 
 ### Link
 ```smarty
-{a href="" textDecoration=#aTextDecoration# target=#aTarget# buttonHeight=false style=false id=false class=false attrs=false}
+{a href="" target=#aTarget# textDecoration=#aTextDecoration# buttonHeight=false style=false id=false class=false attrs=false}
 ```
 Notes:
 - `buttonHeight`: if you want to "buttonize" the link, set its height
@@ -391,6 +391,15 @@ To use the framework in your own PHP scripts, install it in the standard way and
   //...
   ```
   Replace `path_to_images_dir` with the actual path.
+
+
+
+<br>
+## Quick tips
+- to create a vertical line (`<hr>`), you can use a gif pixel image; set its width to 100% and height to 1px
+- set line heights in pixels, rather than percentages or numbers
+- to achieve precision, define cell paddings by nesting tables, instead of setting CSS `padding` property
+- set a background color on tables, rather than on cells (causes gap lines on iPhones)
 
 
 

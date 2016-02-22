@@ -31,6 +31,8 @@ define('IE_SMARTY_PLUGINS_DIR', IE_CORE_DIR.'/plugins/');
 define('IE_SMARTY_CUSTOM_PLUGINS_DIR', IE_CUSTOM_DIR.'/plugins/');
 
 ini_set('display_errors', 'off');
+ini_set('date.timezone', 'Europe/London');	//anything to disable warnings
+
 
 require_once(IE_ROOT_DIR.'/vendor/autoload.php');
 
