@@ -26,7 +26,7 @@ function smarty_function_margin($params, Smarty_Internal_Template $template)
       'height' => 30,
       'colspan' => 1,
       'bgcolor' => false,
-      'style' => false,
+      'style' => 'line-height:0;',
       'id' => false,
       'class' => false,
       'attrs' => false
@@ -39,7 +39,7 @@ function smarty_function_margin($params, Smarty_Internal_Template $template)
   $tpl .= " colspan={$par['colspan']} align=false valign=false noFont=true";
   $tpl .= SmartyUtils::addAttr('overflow', 'true');
   $tpl .= SmartyUtils::addAttr('bgcolor', $par['bgcolor']);
-  $tpl .= SmartyUtils::addAttr('fontSize', 1);
+  $tpl .= SmartyUtils::addAttr('fontSize', 0);
   $tpl .= SmartyUtils::addAttr('style', $par['style']);
   $tpl .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);
   $tpl .= "}";

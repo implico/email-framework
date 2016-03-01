@@ -396,7 +396,10 @@ To use the framework in your own PHP scripts, install it in the standard way and
 
 <br>
 ## Quick tips
-- to create a vertical line (`<hr>`), you can use a gif pixel image; set its width to 100% and height to 1px
+- to create a vertical line (`<hr>`), you can use the following code:
+```smarty
+{margin height=1 bgcolor="#000000"}
+```
 - set line heights in pixels, rather than percentages or numbers
 - to achieve precision, define cell paddings by nesting tables, instead of setting CSS `padding` property
 - set a background color on tables, rather than on cells (causes gap lines on iPhones)
