@@ -23,7 +23,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
   $par->setParams(
     [],
     [
-      'width' => $smarty->getConfigVars('lContentWidth'),
+      'width' => false,//$smarty->getConfigVars('lContentWidth'),
       'cellpadding' => '0',
       'cellspacing' => '0',
       'bgcolor' => false,

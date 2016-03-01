@@ -88,7 +88,7 @@
 							{tr}
 								{td width=170 bgcolor="#4040ff" height=50 borderRadius="5px"}
 									{a href="" buttonHeight=50}
-										{font color="#fff"}
+										{font sizeForce=true color="#fff"}
 											Lorem ipsum &raquo;
 										{/font}
 									{/a}
@@ -98,7 +98,7 @@
 							{tr}
 								{td width=170 bgcolor="#ff4040" height=50 borderRadius="5px"}
 									{a href="" buttonHeight=50}
-										{font color="#fff"}
+										{font sizeForce=true color="#fff"}
 											Dolor amet &raquo;
 										{/font}
 									{/a}

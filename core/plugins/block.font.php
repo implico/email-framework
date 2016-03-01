@@ -25,6 +25,7 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
     [
       'color' => $smarty->getConfigVars('fontColor'),
       'size' => $smarty->getConfigVars('fontSize'),
+      'sizeForce' => false,
       'family' => $smarty->getConfigVars('fontFamily'),
       'bold' => false,
       'b' => false,	//alias for bold
@@ -63,12 +64,21 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
 
       $css = "";
       $css .= SmartyUtils::addCss('font-size', $par['size'] . 'px');
+      if ($par['sizeForce']) {
+        $css .= SmartyUtils::addCss('font-size', $par['size'] . 'px !important');
+      }
       $cssFont = $css;
       $css .= SmartyUtils::addCss('color', $par['color']);
       $css .= SmartyUtils::addCss('font-family', $par['family']);
-      $css .= SmartyUtils::addCss('font-weight', $par['weight']);
-      $css .= SmartyUtils::addCss('font-style', $par['style']);
-      $css .= SmartyUtils::addCss('text-decoration', $par['decoration']);
+      if ($isBold) {
+        $css .= SmartyUtils::addCss('font-weight', 'bold');
+      }
+      if ($isItalic) {
+        $css .= SmartyUtils::addCss('font-style', 'italic');
+      }
+      if ($isUnderlined) {
+        $css .= SmartyUtils::addCss('text-decoration', 'underline');
+      }
       if ($repeatCss || $par['forceCss']) {
         $cssFont = $css;
       }
@@ -76,8 +86,8 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       $prop = SmartyUtils::addCss('line-height', $par['lineHeight']);
       $css .= $prop;
       $cssFont .= $prop;
-      if ($par['cssStyle']) {
-        $prop = $par['cssStyle'];
+      if ($par['style']) {
+        $prop = $par['style'];
         $css .= $prop;
         $cssFont .= $prop;
       }
