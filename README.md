@@ -207,7 +207,7 @@ Specify width, height, font sizes without units.
 
 ### Table
 ```smarty
-{table width=false cellpadding=0 cellspacing=0 bgcolor=false border=0 bordercolor=false align=#tableAlign# style=false id=false class=false attrs=false}
+{table width=#tableWidth# cellpadding=0 cellspacing=0 bgcolor=false border=0 bordercolor=false align=#tableAlign# style=false id=false class=false attrs=false}
 ```
 
 ### Tr

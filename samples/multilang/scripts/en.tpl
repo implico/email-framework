@@ -7,7 +7,7 @@
 
     {tr}
       {td align=center}
-        {font color="#BF0000"}This is only applied to the English version{/font}
+        {font color="#BF0000"}This is applied only to the English version{/font}
       {/td}
     {/tr}
   {/table}
