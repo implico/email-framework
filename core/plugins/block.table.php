@@ -75,6 +75,9 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
       if ($smarty->getConfigVars('outlookCss')) {
         $style .= "mso-table-lspace:0pt;mso-table-rspace:0pt;";
       }
+      if ($par['align'] == 'center') {
+        $style .= 'margin-left:auto;margin-right:auto;';
+      }
       if ($par['style']) {
         $style .= $par['style'];
       }
