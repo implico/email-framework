@@ -50,7 +50,7 @@ The framework brings configured Smarty plugins and CLI interface, so you can dev
 
 And run the watcher:
 ```
-php email.php compile [project_name] -w
+iemail compile [project_name] -w
 ```
 
 <br>
@@ -104,10 +104,12 @@ To use the framework you need the following software:
 - Git, e.g. [Github desktop](https://desktop.github.com/)
 - [Composer][composer] (for Windows, use the installer)
 
+Clone this repo and **add to the PATH variable**.
+
 
 ### Example: PHP installation on Windows
 
-- unpack the [downloaded archive](http://windows.php.net/download/) (e.g. PHP 7.x Non Thread Safe Zip) into `c:\PHP`
+- unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 7.x Non Thread Safe Zip) into `c:\PHP`
 - add `c:\PHP` to your PATH environment variable
 - edit `c:\PHP\php.ini`, uncomment:
   - `extension_dir = "ext"`
@@ -117,28 +119,30 @@ To use the framework you need the following software:
 
 ### Initializing the app
 
-Just run `composer install` in the directory you have cloned this repository into.
+Just run `composer install` in the directory you have cloned this repository into. Copy the `samples` directory into desired location and change its name to e.g. `email-projects`. This will be your bootstrap project dir (you can remove all example projects if you wish).
 
 
 
 <br>
 ## CLI
 
+The global executable is named `iemail`, just runs `php email.php` and passes all the parameters. Run it from your projects dir.
+
 ### Compile project
 ```
-php email.php compile project_name [-s script_name(s)] [-d projects_dir] [-w] [-o m|f]
+iemail compile project_name [-s script_name(s)] [-d projects_dir] [-w] [-o m|f]
 ```
 
 Compiles project with specified `project_name`. Options:
 - `-s` (`--script`): script name(s), if not set - all scripts are compiled
-- `-d` (`--dir`): projects directory, defaults to `projects`
+- `-d` (`--dir`): projects directory, defaults to current direcotry
 - `-w` (`--watch`): watch mode - starts watching your project dir and compiles on any change
 - `-o` (`--output`): output mode - minified (m) or formatted with indentation (f)
 
 
 ### Send test email(s)
 ```
-php email.php send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [--minified] [-i interval_ms] [--errorstop]
+iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [--minified] [-i interval_ms] [--errorstop]
 ```
 
 Sends test email(s) for the specified `project_name`. All images are converted and embedded as cids. SMTP and default options are set in the configuration file.
@@ -162,19 +166,25 @@ Options:
 <br>
 ## Directory structure
 
+### Framework
 The framework directory structure overview:
 
 - `core`: PHP files, Smarty plugins and master config file
-- `custom`: custom master config file and optionally your own Smarty plugins
-- `projects`: your projects dir, each project has the following structure:
+- `samples`: example projects, used also for bootstraping
+- `vendor`: modules installed with [Composer][composer]
+
+
+### Projects dir
+The `_custom` subdirectory contains optional: custom master config file and your own Smarty plugins - place them in the `plugins` directory.
+
+Other dirs contain per project files. Each of them has the following structure:
+
   - `configs`: configuration for the whole project and for particular scripts
   - `layouts`: layout templates
   - `outputs`: compiled project files (HTML)
   - `scripts`: script templates
   - `sender`: sender logs
   - `styles`: CSS styles (optionally included in your layout template)
-- `samples`: example projects, used also for bootstraping
-- `vendor`: modules installed with [Composer][composer]
 
 
 <br>
@@ -265,9 +275,9 @@ To force white space strip (in the formatted version), use the following syntax:
 <br>
 ## Configuration
 Default settings are defined in the master file `core/config.conf`. To change them, edit (if they do not exist - create) the following files:
-- `custom/config.conf`: your master custom config applied to all projects
-- `projects/[project_name]/configs/config.conf`: config applied to the project
-- `projects/[project_name]/configs/scripts/[script_name].conf`: per script config (name it as the script name)
+- `[projects_dir]/_custom/config.conf`: your master custom config applied to all projects
+- `[projects_dir]/[project_name]/configs/config.conf`: config applied to the project
+- `[projects_dir]/[project_name]/configs/scripts/[script_name].conf`: per script config (name it as the script name)
 
 All most recent options are described in the master file. You can change (among others):
 - encoding, font defining mode (as a `font` tag, `span` and/or in a `td` cell tag)
@@ -279,9 +289,9 @@ All most recent options are described in the master file. You can change (among 
 ## Examples
 
 ### Starting a new project
-Just copy a project from the `samples` to your `projects` directory and change its name. Usually you will probably need the `plain` example. Run compiler in the watch mode:
+Just copy a project from the `samples` to your projects directory and change its name. Usually, you will probably need the `plain` example. Run compiler in the watch mode:
 ```
-php email.php compile project_name -w
+iemail compile project_name -w
 ```
 Open the script HTML file located in your project `outputs` directory. Refresh on every compilation to see the changes.
 
@@ -413,6 +423,7 @@ Integration with [gulp] for:
 - more optimized watch
 - auto-refresh by [Browsersync](https://www.browsersync.io/)
 - use one of other available tools (like CSS inliners)
+- rewrite to [Node.js][nodejs] using [NSmarty][nsmarty]
 
 
 
@@ -428,6 +439,8 @@ Take a look at other interesting tools and frameworks:
 [composer]: https://getcomposer.org/
 [gulp]: http://gulpjs.com/
 [mjml]: https://mjml.io/
+[nodejs]: https://nodejs.org/
+[nsmarty]: https://github.com/stepofweb/nsmarty
 [php]: http://www.php.net/
 [phpmailer]: https://github.com/PHPMailer/PHPMailer
 [smarty]: http://www.smarty.net/

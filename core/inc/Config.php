@@ -49,7 +49,7 @@ class Config implements \ArrayAccess
 	public function getErrors()
 	{
 		$ret = false;
-		
+
 		if (!file_exists($this->data['dir'] . '.')) {
 			$ret = 'projectNotFound';
 		}

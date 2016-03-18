@@ -19,10 +19,10 @@ if (php_sapi_name() != "cli") {
 define('IE_ROOT_DIR', __DIR__);
 //core dir
 define('IE_CORE_DIR', IE_ROOT_DIR.'/core/');
-//custom dir
-define('IE_CUSTOM_DIR', IE_ROOT_DIR.'/custom/');
 //projects dir
-define('IE_PROJECTS_DIR', IE_ROOT_DIR.'/projects/');
+define('IE_PROJECTS_DIR', getcwd() . DIRECTORY_SEPARATOR);//IE_ROOT_DIR.'/projects/');
+//custom dir
+define('IE_CUSTOM_DIR', IE_PROJECTS_DIR.'/_custom/');
 //cache dir
 define('IE_SMARTY_COMPILE_DIR', IE_ROOT_DIR.'/.cache/');
 //plugins dir
