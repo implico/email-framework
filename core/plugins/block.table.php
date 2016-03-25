@@ -40,7 +40,9 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
   // only output on the closing tag
   if (!$repeat) {
     if (isset($content)) {
-
+      if ($par['width'] === null) {
+        $par['width'] = $smarty->getConfigVars('lWidth');
+      }
   
       $widthCss = SmartyUtils::unitPx($par['width']);
       

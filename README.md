@@ -227,7 +227,7 @@ Specify width, height, font sizes without units.
 
 ### Td
 ```smarty
-{td width=#lContentWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
+{td width=#lTableWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
 ```
 Notes:
 - `padding`: set as a CSS `padding` property value, e.g. `10px 20px`
@@ -303,7 +303,7 @@ This shows how to build more complex projects, including lists and buttons.
 
 ### Responsive
 Presents the way to build a responsive (in fact - fluid) project. Notes:
-- config option `lContentWidth` is set to 100%
+- config option `tableWidth` is set to 100%
 - layout template:
   - `<meta name="viewport">` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)

@@ -25,7 +25,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
   $par->setParams(
     [],
     [
-      'width' => $smarty->getConfigVars('lContentWidth'),
+      'width' => $smarty->getConfigVars('tableWidth'),
       'height' => false,
       'colspan' => 1,
       'align' => $smarty->getConfigVars('tdAlign'),

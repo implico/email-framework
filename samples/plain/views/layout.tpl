@@ -25,8 +25,6 @@
 			{tr}
 				{td valign="top" align="left" width=#lWidth#}
 					
-					{block script}{/block}
-					
 				{/td}
 			{/tr}
 			
