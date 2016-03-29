@@ -1,13 +1,11 @@
-{block layout}{strip}
+{strip}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <html>
 	<head>
 		
-		{* Eclipse hack *}
-		{"<"}meta http-equiv="Content-Type" content="text/html; charset={#encoding#}" />
-		
-		{if #title#}
-			<title>{#title#|escape}</title>
-		{/if}
+		{* charset *}
+		<meta http-equiv="Content-Type" content="text/html; charset={#encoding#}" />
 		
 		{* uncomment if responsive
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -75,4 +73,4 @@
 		{/table}
 	</body>
 </html>
-{/strip}{/block}
+{/strip}
