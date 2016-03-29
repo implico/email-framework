@@ -104,12 +104,12 @@ To use the framework you need the following software:
 - Git, e.g. [Github desktop](https://desktop.github.com/)
 - [Composer][composer] (for Windows, use the installer)
 
-Clone this repo and **add to the PATH variable**.
+Clone this repo and **add the dir to the PATH variable**.
 
 
 ### Example: PHP installation on Windows
 
-- unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 7.x Non Thread Safe Zip) into `c:\PHP`
+- unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 5.6.x Non Thread Safe Zip - rather that 7.x) into `c:\PHP`
 - add `c:\PHP` to your PATH environment variable
 - edit `c:\PHP\php.ini`, uncomment:
   - `extension_dir = "ext"`
@@ -119,14 +119,14 @@ Clone this repo and **add to the PATH variable**.
 
 ### Initializing the app
 
-Just run `composer install` in the directory you have cloned this repository into. Copy the `samples` directory into desired location and change its name to e.g. `email-projects`. This will be your bootstrap project dir (you can remove all example projects if you wish).
+Just run `composer install` in the directory you have cloned this repository into. Copy the `samples` directory into desired location (where you want to keep your projects) and change its name to e.g. `email-projects`. Of course, you can remove all example projects if you wish, but you will probably need the `plain` example for bootstraping.
 
 
 
 <br>
 ## CLI
 
-The global executable is named `iemail`, just runs `php email.php` and passes all the parameters. Run it from your projects dir.
+The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. recently created `email-projects`).
 
 ### Compile project
 ```
@@ -180,11 +180,11 @@ The `_custom` subdirectory contains optional: custom master config file and your
 Other dirs contain per project files. Each of them has the following structure:
 
   - `configs`: configuration for the whole project and for particular scripts
-  - `layouts`: layout templates
+  - `views`: view templates:
+    - `layout.tpl`: the main view (layout) file
+    - `scripts`: if you want to have multiple views for one main layout (which differ in language or some details like colors, graphics), place them here; by default, there is only one script: `script.tpl`
+    - `styles`: CSS styles (included in your layout template)
   - `outputs`: compiled project files (HTML)
-  - `scripts`: script templates
-  - `sender`: sender logs
-  - `styles`: CSS styles (optionally included in your layout template)
 
 
 <br>
@@ -227,7 +227,7 @@ Specify width, height, font sizes without units.
 
 ### Td
 ```smarty
-{td width=#lTableWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
+{td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
 ```
 Notes:
 - `padding`: set as a CSS `padding` property value, e.g. `10px 20px`
@@ -303,7 +303,7 @@ This shows how to build more complex projects, including lists and buttons.
 
 ### Responsive
 Presents the way to build a responsive (in fact - fluid) project. Notes:
-- config option `tableWidth` is set to 100%
+- config options `tableWidth` and `tdWidth` are set to 100%
 - layout template:
   - `<meta name="viewport">` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)

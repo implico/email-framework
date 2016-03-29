@@ -1,1 +1,1 @@
-@php %~dp0\email.php %*
+@php %~dp0\iemail.php %*

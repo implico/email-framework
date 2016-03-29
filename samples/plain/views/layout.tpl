@@ -23,7 +23,7 @@
 	<body>
 		{table width=#lWidth#}
 			{tr}
-				{td valign="top" align="left" width=#lWidth#}
+				{td width=#lWidth#}
 					
 				{/td}
 			{/tr}

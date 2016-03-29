@@ -28,16 +28,15 @@ class Config implements \ArrayAccess
 			$projectsDir .= DIRECTORY_SEPARATOR;
 		}
 		
-		$this->data['name'] = $project;
-		$this->data['dir'] = $projectsDir . $project . '/';							//project main dir
-		$this->data['configsDir'] = $this['dir'] . 'configs/';					//config (PHP & Smarty) dir
-		$this->data['configsScriptsDir'] = $this['configsDir'] . 'scripts/';	//script-specific config dir (overrides main config)
-		$this->data['layoutsDir'] = $this['dir'] . 'layouts/';					//layout dir
-		$this->data['scriptsDir'] = $this['dir'] . 'scripts/';					//script dir
-		$this->data['stylesDir'] = $this['dir'] . 'styles/';						//styles dir (for RWD), also compiled by Smarty
-		$this->data['outputsDir'] = $this['dir'] . 'outputs/';					//output (html) dir
-		$this->data['senderDir'] = $this['dir'] . 'sender/';						//sender dir (logs)
-		
+		$this->data['name'] 							= $project;
+		$this->data['dir'] 								= $projectsDir . $project . '/';			//project main dir
+		$this->data['configsDir'] 				= $this['dir'] . 'configs/';					//config (PHP & Smarty) dir
+		$this->data['configsScriptsDir'] 	= $this['configsDir'] . 'scripts/';		//script-specific config dir (overrides main config)
+		$this->data['layoutsDir'] 				= $this['dir'] . 'views/';						//layouts dir
+		$this->data['scriptsDir'] 				= $this['layoutsDir'] . 'scripts/';		//scripts dir
+		$this->data['stylesDir'] 					= $this['layoutsDir'] . 'styles/';		//styles dir (for RWD), also compiled by Smarty
+		$this->data['outputsDir'] 				= $this['dir'] . 'outputs/';					//output (html) dir
+		$this->data['senderDir'] 					= $this['dir'];												//sender dir (logs)
 	}
 	
 	
@@ -55,7 +54,6 @@ class Config implements \ArrayAccess
 		}
 		
 		return $ret;
-		
 	}
 	
 
@@ -80,6 +78,5 @@ class Config implements \ArrayAccess
 	public function offsetGet($offset)
 	{
 		return $this->offsetExists($offset) ? $this->data[$offset] : null;
-	}
-	
+	}	
 }

@@ -1,4 +1,4 @@
 #!/bin/sh
 basedir=`dirname "$0"`
 
-php "$basedir/email.php" "$@"
+php "$basedir/iemail.php" "$@"
