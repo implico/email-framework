@@ -1,21 +1,17 @@
 {
 	"name": "implico/email-framework",
-	"version": "1.0.1",
+	"version": "0.0.1",
 	
 	"require": {
-		"smarty/smarty": "3.*.*",
+		"smarty/smarty": "3.*",
 		"symfony/console": "2.*",
 		"gajus/dindent": "2.*",
 		"phpmailer/phpmailer": "5.*"
 	},
-
-	"config": {
-		"vendor-dir": "vendor"
-	},
 	
 	"autoload": {
 		"psr-4": {
-			"Implico\\Email\\": "core/inc/"
+			"ImplicoEmail\\": "inc/"
 		}
 	}
 }

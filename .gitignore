@@ -1,10 +1,6 @@
 /.project
 /.settings
-/.cache
-/vendor/
-/custom/**/*
-!/custom/plugins/
-!/custom/plugins/.gitkeep
-/projects/**/*
-!/projects/.gitkeep
+/log-sent.txt
 /composer.lock
+/projects/
+!/projects/sample/
