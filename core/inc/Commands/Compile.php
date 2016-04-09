@@ -19,6 +19,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
+
+
 class Compile extends Command
 {
 	protected $config;
@@ -160,6 +163,9 @@ class Compile extends Command
 		//formatter object
 		$formatter = null;
 
+		//css inliner object
+		$cssToInlineStyles = new CssToInlineStyles();
+
 		while (true) {
 
 			//compile only if not watching or the dirs filestamp changes
@@ -211,6 +217,14 @@ class Compile extends Command
 						
 						//get the html
 						$html = $smarty->fetch($this->config['scriptsDir'] . $script);
+
+						//get inline styles
+						$inlineCss = $smarty->fetch($this->config['stylesDir'] . 'inline.tpl');
+						if (trim($inlineCss)) {
+							$cssToInlineStyles->setHTML($html);
+							$cssToInlineStyles->setCSS($inlineCss);
+							$html = $cssToInlineStyles->convert();
+						}
 						
 						//save minified
 						if ($outputMinified) {

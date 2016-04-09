@@ -20,11 +20,12 @@ define('IE_ROOT_DIR', __DIR__);
 //core dir
 define('IE_CORE_DIR', IE_ROOT_DIR.'/core/');
 //sample dir
-define('IE_SAMPLE_DIR', IE_ROOT_DIR.'/samples/');
+define('IE_SAMPLES_DIR', IE_ROOT_DIR.'/samples/');
 //projects dir
 define('IE_PROJECTS_DIR', getcwd() . DIRECTORY_SEPARATOR);//IE_ROOT_DIR.'/projects/');
 //custom dir
-define('IE_CUSTOM_DIR', IE_PROJECTS_DIR.'/_custom/');
+define('IE_CUSTOM_DIR_NAME', '_custom');
+define('IE_CUSTOM_DIR', IE_PROJECTS_DIR.'/' . IE_CUSTOM_DIR_NAME . '/');
 //cache dir
 define('IE_SMARTY_COMPILE_DIR', IE_ROOT_DIR.'/.cache/');
 //plugins dir

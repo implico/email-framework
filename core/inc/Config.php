@@ -34,7 +34,7 @@ class Config implements \ArrayAccess
 		$this->data['configsScriptsDir'] 	= $this['configsDir'] . 'scripts/';		//script-specific config dir (overrides main config)
 		$this->data['layoutsDir'] 				= $this['dir'] . 'views/';						//layouts dir
 		$this->data['scriptsDir'] 				= $this['layoutsDir'] . 'scripts/';		//scripts dir
-		$this->data['stylesDir'] 					= $this['layoutsDir'] . 'styles/';		//styles dir (for RWD), also compiled by Smarty
+		$this->data['stylesDir'] 					= $this['dir'] . 'styles/';						//styles dir (for RWD and inline), also compiled by Smarty
 		$this->data['outputsDir'] 				= $this['dir'] . 'outputs/';					//output (html) dir
 		$this->data['senderDir'] 					= $this['dir'];												//sender dir (logs)
 	}

@@ -1,12 +1,13 @@
 {
 	"name": "implico/email-framework",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	
 	"require": {
 		"smarty/smarty": "3.*.*",
 		"symfony/console": "2.*",
 		"gajus/dindent": "2.*",
-		"phpmailer/phpmailer": "5.*"
+		"phpmailer/phpmailer": "5.*",
+		"tijsverkoyen/css-to-inline-styles": "1.*"
 	},
 
 	"config": {

@@ -119,7 +119,7 @@ Clone this repo and **add the dir to the PATH variable**.
 
 ### Initializing the app
 
-Just run `composer install` in the directory you have cloned this repository into. Copy the `samples` directory into desired location (where you want to keep your projects) and change its name to e.g. `email-projects`. Of course, you can remove all example projects if you wish, but you will probably need the `plain` example for bootstraping.
+Just run `composer install` in the directory you have cloned this repository into. Create a directory for your project in your desired location. See the [examples section](#examples) to see how to start a new project.
 
 
 
@@ -128,15 +128,17 @@ Just run `composer install` in the directory you have cloned this repository int
 
 The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. recently created `email-projects`).
 
+
 ### Initialize new project
 ```
-iemail init project_name [base_project_name]
+iemail init project_name [base_project_name] [-c]
 ```
 
 Creates a new project with specified `project_name`. Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the framework `samples`.
 
 Options:
 - `base_project_name`: enter the name of the base project to copy; defaults to `plain`
+- `-c` (`--custom`): initializes the `_custom` directory with configuration common for all projects and custom plugins dir; use it for the very first project initialization
 
 
 ### Compile project
@@ -194,8 +196,10 @@ Other dirs contain per project files. Each of them has the following structure:
   - `views`: view templates:
     - `layout.tpl`: the main view (layout) file
     - `scripts`: if you want to have multiple views for one main layout (which differ in language or some details like colors, graphics), place them here; by default, there is only one script: `script.tpl`
-    - `styles`: CSS styles (included in your layout template)
-  - `outputs`: compiled project files (HTML)
+  - `styles`: CSS styles (as Smarty templates, so you can e.g. access config variables)
+    - `layout.tpl`: main styles included in your view layout template (you can rename or create new ones)
+    - `inline.tpl`: styles to put inline with [CssToInlineStyles](https://github.com/tijsverkoyen/CssToInlineStyles) (you cannot rename it, but can include other templates from within)
+  - `outputs`: compiled project files (HTML); put your images here
 
 
 <br>
@@ -286,7 +290,7 @@ To force white space strip (in the formatted version), use the following syntax:
 <br>
 ## Configuration
 Default settings are defined in the master file `core/config.conf`. To change them, edit (if they do not exist - create) the following files:
-- `[projects_dir]/_custom/config.conf`: your master custom config applied to all projects
+- `[projects_dir]/_custom/config.conf`: your custom common config applied to all projects
 - `[projects_dir]/[project_name]/configs/config.conf`: config applied to the project
 - `[projects_dir]/[project_name]/configs/scripts/[script_name].conf`: per script config (name it as the script name)
 
@@ -297,29 +301,56 @@ All most recent options are described in the master file. You can change (among 
 
 
 <br>
+<a name="examples"></a>
 ## Examples
 
 ### Starting a new project
-Just copy a project from the `samples` to your projects directory and change its name. Usually, you will probably need the `plain` example. Run compiler in the watch mode:
+
+Create your project directory and run the `init` command in it. For the first time:
+
 ```
-iemail compile project_name -w
+iemail init my_project_name -c
+```
+
+By using the `-c` option, the `_custom` folder will also be created. For further runs, use just:
+
+```
+iemail init my_project_name
+```
+
+By default, the base (copy source) project is the `plain` sample from the core (unless you create own `plain` project, then it will be the default for bootstraping). You can specify base project by the second parameter:
+
+```
+iemail init my_project_name base_project_name
+```
+
+If the base project is not found in the current directory, it will be searched in the core `sample` directory.
+
+
+After initialization, run compiler in watch mode:
+```
+iemail compile my_project_name -w
 ```
 Open the script HTML file located in your project `outputs` directory. Refresh on every compilation to see the changes.
+
 
 ### Plain
 This is a plain, bootstrap project. Includes only a layout with the main table defined.
 
+
 ### Grid
 This shows how to build more complex projects, including lists and buttons.
+
 
 ### Responsive
 Presents the way to build a responsive (in fact - fluid) project. Notes:
 - config options `tableWidth` and `tdWidth` are set to 100%
 - layout template:
-  - `<meta name="viewport">` is uncommented, mainly for Apple devices that support media queries (see the last media query that limits table width)
+  - `<meta name="viewport">` is uncommented, primarily for Apple devices that support media queries (see the last media query that limits table width)
   - added Outlook max-width hack as a conditional comment (before and after the main table definition)
   - added max-width to the main table (for e.g. Gmail)
 - all width units (tables, cells, images) are set in percentage
+
 
 ### Multilang
 Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that `script.tpl` is extended by language scripts, in this case `en.tpl` and `pl.tpl`.
@@ -422,6 +453,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
 ```smarty
 {margin height=1 bgcolor="#000000"}
 ```
+- if you have repeated code, take advantage of [functions](http://www.smarty.net/docs/en/language.function.function.tpl); if the code repeats among projects, you can think about creating own plugins ([template functions](http://www.smarty.net/docsv2/en/plugins.functions.tpl) or [block functions](http://www.smarty.net/docsv2/en/plugins.block.functions.tpl))
 - set line heights in pixels, rather than percentages or numbers
 - to achieve precision, define cell paddings by nesting tables, instead of setting CSS `padding` property
 - set a background color on tables, rather than on cells (causes gap lines on iPhones)
@@ -430,11 +462,13 @@ To use the framework in your own PHP scripts, install it in the standard way and
 
 <br>
 ## TODO
-Integration with [gulp] for:
-- more optimized watch
-- auto-refresh by [Browsersync](https://www.browsersync.io/)
-- use one of other available tools (like CSS inliners)
-- rewrite to [Node.js][nodejs] using [NSmarty][nsmarty]
+
+- integration with [gulp] for:
+  - more optimized watch
+  - auto-refresh by [Browsersync](https://www.browsersync.io/)
+  - use some of useful plugins
+- add optional compression support (ImageMagick)
+- create a [Node.js][nodejs] version (using [NSmarty][nsmarty])
 
 
 

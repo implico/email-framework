@@ -12,7 +12,7 @@
     *}
     
 		<style type="text/css">
-			{include file="[styles]layout.css" assign=styles}
+			{include file="[styles]layout.tpl" assign=styles}
 			{SmartyUtils::removeCssComments($styles)|strip}
 		</style>
 
