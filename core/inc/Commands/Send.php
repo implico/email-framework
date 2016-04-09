@@ -122,7 +122,7 @@ class Send extends Command
 			switch ($error) {
 				case 'projectNotFound':
 					$output->writeln('<fg=red>ERROR: project directory not found</fg=red>');
-					exit();
+					exit(1);
 					break;
 			}
 		}

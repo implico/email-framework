@@ -128,6 +128,17 @@ Just run `composer install` in the directory you have cloned this repository int
 
 The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. recently created `email-projects`).
 
+### Initialize new project
+```
+iemail init project_name [base_project_name]
+```
+
+Creates a new project with specified `project_name`. Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the framework `samples`.
+
+Options:
+- `base_project_name`: enter the name of the base project to copy; defaults to `plain`
+
+
 ### Compile project
 ```
 iemail compile project_name [-s script_name(s)] [-d projects_dir] [-w] [-o m|f]

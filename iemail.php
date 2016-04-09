@@ -19,6 +19,8 @@ if (php_sapi_name() != "cli") {
 define('IE_ROOT_DIR', __DIR__);
 //core dir
 define('IE_CORE_DIR', IE_ROOT_DIR.'/core/');
+//sample dir
+define('IE_SAMPLE_DIR', IE_ROOT_DIR.'/samples/');
 //projects dir
 define('IE_PROJECTS_DIR', getcwd() . DIRECTORY_SEPARATOR);//IE_ROOT_DIR.'/projects/');
 //custom dir
@@ -41,6 +43,7 @@ use Symfony\Component\Console\Application;
 
 
 $app = new Application('Implico Email Framework', '0.0.1');
+$app->add(new \Implico\Email\Commands\Init());
 $app->add(new \Implico\Email\Commands\Compile());
 $app->add(new \Implico\Email\Commands\Send());
 $app->run();
