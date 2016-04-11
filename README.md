@@ -362,45 +362,34 @@ Second way is to inject content by using blocks in language scripts.
 
 <br>
 ## Integration
-To use the framework in your own PHP scripts, install it in the standard way and then:
-- update or create your [Composer][composer] config file (`composer.json`):
+To use the framework in your own PHP scripts:
+- install it with [Composer][composer]
   ```json
   {
-    "name": "...",
-    "version": "...",
-    
     "require": {
-      "smarty/smarty": "3.*.*"
+      "implico/email-framework": "1.*"
     },
-    
-    "autoload": {
-      "psr-4": {
-        "Implico\\Email\\": "path_to_core_inc_dir"
-      }
-    }
   }
   ```
-  Require Smarty only if you don't already use it in your project.
-  
-  Replace `path_to_core_inc_dir` with the actual path relative to the file location, e.g. `views/email-framework/core/inc/`.
 
 - to render an email, first create a Smarty object:
   ```php
   $smarty = new \Smarty();
   ```
+
 - add plugins dir
   ```php
   $smarty->addPluginsDir(path_to_core_plugins_dir);
   ```
-  Replace `path_to_core_plugins_dir` with the actual path, e.g. `__DIR__.'/views/email-framework/core/plugins/'`.
+  Replace `path_to_core_plugins_dir` with the actual path, e.g. `__DIR__.'/vendor/email-framework/core/plugins/'`.
 
 - load config file(s)
   ```php
   $smarty->configLoad(path_to_config_file1);
   $smarty->configLoad(path_to_config_file2);
   ```
-- set directories the templates are referring to, like this:
 
+- set directories the templates are referring to, like this:
   ```php
   $smarty->setTemplateDir(array(
     0 => path_to_project,
@@ -409,6 +398,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
     'styles' => path_to_project_css
   ));
   ```
+
 - execute the script and then send it using your favorite library (like [PHPMailer][phpmailer] or [Swift Mailer][swiftmailer])
   ```php
   $html = $smarty->fetch(path_to_script)
@@ -417,33 +407,7 @@ To use the framework in your own PHP scripts, install it in the standard way and
   //...
   ```
 
-- to embed images as cids, you can use the following snippet (example for [PHPMailer][phpmailer])
-  ```php
-  $mail = new \PHPMailer();
-  //...
-
-  $cids = array();
-  $i = 1;
-  preg_match_all('/\<img.*?src="(.*?)".*?\/?\>/', $html, $imgs);
-  foreach ($imgs[1] as $img)
-  {
-    $fname = path_to_images_dir.(substr($img, 0, 1) == '/' ? substr($img, 1) : $img);
-    $pi = pathinfo($img);
-    $name = $pi['basename'];
-    $cid = 'cid-'.($i++);
-    $cids[$fname] = array('fname' => $fname, 'cid' => $cid, 'name' => $name, 'replace' => $img);
-  }
-  
-  foreach ($cids as $c)
-  {
-    $mail->AddEmbeddedImage($c['fname'], $c['cid'], $c['name']);
-    $html = str_replace('src="'.$c['replace'].'"', 'src="cid:'.$c['cid'].'"', $html);
-  }
-
-  //send the email
-  //...
-  ```
-  Replace `path_to_images_dir` with the actual path.
+- for [PHPMailer][phpmailer], you can embed images as cids using the [msgHTML](http://phpmailer.github.io/PHPMailer/classes/PHPMailer.html#method_msgHTML) method
 
 
 
