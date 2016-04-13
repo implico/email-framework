@@ -32,9 +32,8 @@ class Create extends Command
       ->setDescription('Initializes projects directory')
       ->addArgument(
         'directory_name',
-        InputArgument::OPTIONAL,
-        'Projects directory name',
-        'email-projects'
+        InputArgument::REQUIRED,
+        'Projects directory name'
       )
     ;
   }

@@ -145,18 +145,18 @@ The global executable is named `iemail`, it just runs `php email.php` and passes
 
 ### Initialize projects directory
 ```
-iemail create [projects_dir_name]
+iemail create projects_dir_name
 ```
 
 Creates a new projects directory (where your projects will be kept) with specified `project_name`.  Creates `_custom` subdirectory, with master config file and custom plugins dir.
 
 Options:
-- `projects_dir_name`: directory name, defaults to `email-projects`
+- `projects_dir_name`: directory name
 
 Example:
 
 ```
-iemail create projects
+iemail create email-projects
 ```
 
 
