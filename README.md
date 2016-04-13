@@ -101,25 +101,41 @@ The code is converted (may vary according to the actual settings) to:
 To use the framework you need the following software:
 
 - [PHP] >= 5.5 with **openssl and mbstring** extensions enabled
-- Git, e.g. [Github desktop](https://desktop.github.com/)
-- [Composer][composer] (for Windows, use the installer)
-
-Clone this repo and **add the dir to the PATH variable**.
-
-
-### Example: PHP installation on Windows
-
-- unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 5.6.x Non Thread Safe Zip - rather that 7.x) into `c:\PHP`
-- add `c:\PHP` to your PATH environment variable
-- edit `c:\PHP\php.ini`, uncomment:
-  - `extension_dir = "ext"`
-  - `extension=php_mbstring.dll`
-  - `extension=php_openssl.dll` 
+- [Composer][composer]
+  - for Windows, use the installer
+  - for Linux, install [globally](https://getcomposer.org/doc/00-intro.md#globally)
 
 
-### Initializing the app
+### PHP installation
 
-Just run `composer install` in the directory you have cloned this repository into. Create a directory for your project in your desired location. See the [examples section](#examples) to see how to start a new project.
+- Windows
+  1. unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 5.6.x Non Thread Safe Zip - rather that 7.x) into `c:\PHP`
+  2. add `c:\PHP` to your [PATH][windows-path] environment variable
+  3. edit `c:\PHP\php.ini`, uncomment:
+    - `extension_dir = "ext"`
+    - `extension=php_mbstring.dll`
+    - `extension=php_openssl.dll` 
+
+
+- Linux
+  
+  Run in the terminal:
+  ```
+  sudo apt-get install php5-cli
+  ```
+
+### Framework installation
+
+1. open a console/terminal window
+2. go to the folder you want to keep the framework core files (don't create a subdirectory, [Composer][composer] will do this for you)
+3. run:
+  ```
+  composer create-project implico/email-framework
+  ```
+4. add the newly created folder to your PATH variable:
+  - [Windows instruction][windows-path]
+  - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
+5. create a directory for your projects in your desired location and enter it; see the [examples section](#examples) to see how to start a new project.
 
 
 
@@ -454,3 +470,4 @@ Take a look at other interesting tools and frameworks:
 [phpmailer]: https://github.com/PHPMailer/PHPMailer
 [smarty]: http://www.smarty.net/
 [swiftmailer]: http://swiftmailer.org/
+[windows-path]: http://www.computerhope.com/issues/ch000549.htm
