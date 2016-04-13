@@ -117,9 +117,7 @@ To use the framework you need the following software:
     - `extension=php_openssl.dll` 
 
 
-- Linux
-  
-  Run in the terminal:
+- Linux - run in the terminal:
   ```
   sudo apt-get install php5-cli
   ```
@@ -135,14 +133,15 @@ To use the framework you need the following software:
 4. add the newly created folder to your PATH variable:
   - [Windows instruction][windows-path]
   - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
-5. create a directory for your projects in your desired location and enter it; see the [examples section](#examples) to see how to start a new project.
+5. create a directory for your projects (e.g. `email-projects`) in desired location and enter it
+6. you can now start a new project - see the [examples section](#examples) to find out more
 
 
 
 <br>
 ## CLI
 
-The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. recently created `email-projects`).
+The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. `email-projects`).
 
 
 ### Initialize new project
@@ -322,7 +321,7 @@ All most recent options are described in the master file. You can change (among 
 
 ### Starting a new project
 
-Create your project directory and run the `init` command in it. For the first time:
+Create your project directory and run the `init` command in it. Only **for the first time**:
 
 ```
 iemail init my_project_name -c
