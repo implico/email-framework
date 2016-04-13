@@ -17,6 +17,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Implico\Email\Utils\FileSystem;
+
 class Init extends Command
 {
   
@@ -27,7 +29,7 @@ class Init extends Command
   {
     $this
       ->setName('init')
-      ->setDescription('Initialize new project')
+      ->setDescription('Initializes new project')
       ->addArgument(
         'project_dest',
         InputArgument::REQUIRED,
@@ -36,13 +38,8 @@ class Init extends Command
       ->addArgument(
         'project_src',
         InputArgument::OPTIONAL,
-        'Base project name (defaults to plain)'
-      )
-      ->addOption(
-        'custom',
-        'c',
-        InputOption::VALUE_NONE,
-        'Initializes also the custom config directory ("' . IE_CUSTOM_DIR_NAME . '"). Use for the very first run'
+        'Base project name',
+        'plain'
       )
     ;
   }
@@ -56,9 +53,6 @@ class Init extends Command
     //get project name
     $projectDest = $input->getArgument('project_dest');
     $projectSrc = $input->getArgument('project_src');
-    if (!strlen($projectSrc)) {
-      $projectSrc = 'plain';
-    }
 
     //validate project name
     $pattern = '/^[a-zA-Z0-9\-\_]+$/';
@@ -89,63 +83,12 @@ class Init extends Command
       exit(1);
     }
 
-    //custom directory init
-    if ($input->getOption('custom')) {
-      if (file_exists(IE_CUSTOM_DIR)) {
-        $output->writeln('<fg=red>WARNING: custom config directory ("' . IE_CUSTOM_DIR_NAME . '") exists, skipping</fg=red>');
-      }
-      else {
-        if (!$this->copy(IE_SAMPLES_DIR . IE_CUSTOM_DIR_NAME, IE_PROJECTS_DIR . IE_CUSTOM_DIR_NAME/*, ['.gitkeep']*/)) {
-          $output->writeln('<fg=red>ERROR: custom config directory initialization failed</fg=red>');
-          exit(1);
-        }
-        if (!copy(IE_CORE_DIR . 'config.conf', IE_PROJECTS_DIR . IE_CUSTOM_DIR_NAME . DIRECTORY_SEPARATOR . 'config.conf')) {
-          $output->writeln('<fg=red>ERROR: failed to copy master config file to custom config directory</fg=red>');
-          exit(1);
-        }
-        $output->writeln('Custom config directory created successfully!');
-      }
-    }
-
     //start copying
-    if (!$this->copy($projectSrcDir, $projectDestDir)) {
+    if (!FileSystem::copy($projectSrcDir, $projectDestDir)) {
       $output->writeln('<fg=red>ERROR: failed to copy source project to destination</fg=red>');
     }
     else {
       $output->writeln('Project "' . $projectDest . '" initialized successfully!');
     }
-  }
-  
-  /**
-   * Copies directory recursively
-   * 
-   * @param string $src   Source path
-   * @param string $src   Source path
-   *
-   * @return bool         True on success, false on failure
-  */
-  function copy($src, $dst, $skip = null) { 
-    
-    $ret = true;
-
-    $dir = opendir($src); 
-    if (!@mkdir($dst))
-      return false;
-
-    while(false !== ( $file = readdir($dir)) ) { 
-        if (( $file != '.' ) && ( $file != '..' ) && (!$skip || !in_array($file, $skip))) { 
-            if ( is_dir($src . '/' . $file) ) { 
-                if (!($ret = $this->copy($src . '/' . $file,$dst . '/' . $file, $skip)))
-                  break;
-            } 
-            else { 
-                if (!($ret = copy($src . '/' . $file,$dst . '/' . $file)))
-                  break;
-            } 
-        } 
-    } 
-    closedir($dir);
-
-    return $ret;
-  }
+  }  
 }

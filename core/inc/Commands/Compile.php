@@ -34,7 +34,7 @@ class Compile extends Command
 	{
 		$this
 			->setName('compile')
-			->setDescription('Compile project')
+			->setDescription('Compiles project')
 			->addArgument(
 				'project',
 				InputArgument::REQUIRED,

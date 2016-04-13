@@ -133,8 +133,7 @@ To use the framework you need the following software:
 4. add the newly created folder to your PATH variable:
   - [Windows instruction][windows-path]
   - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
-5. create a directory for your projects (e.g. `email-projects`) in desired location and enter it
-6. you can now start a new project - see the [examples section](#examples) to find out more
+5. you can now start a new project - see the [examples section](#examples) to find out more
 
 
 
@@ -144,16 +143,38 @@ To use the framework you need the following software:
 The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. `email-projects`).
 
 
-### Initialize new project
+### Initialize projects directory
 ```
-iemail init project_name [base_project_name] [-c]
+iemail create [projects_dir_name]
 ```
 
-Creates a new project with specified `project_name`. Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the framework `samples`.
+Creates a new projects directory (where your projects will be kept) with specified `project_name`.  Creates `_custom` subdirectory, with master config file and custom plugins dir.
+
+Options:
+- `projects_dir_name`: directory name, defaults to `email-projects`
+
+Example:
+
+```
+iemail create projects
+```
+
+
+### Initialize new project
+```
+iemail init project_name [base_project_name]
+```
+
+Creates a new project with specified `project_name`. Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the core framework `samples`.
 
 Options:
 - `base_project_name`: enter the name of the base project to copy; defaults to `plain`
-- `-c` (`--custom`): initializes the `_custom` directory with configuration common for all projects and custom plugins dir; use it for the very first project initialization
+
+Example (creates `test` project based on the `multilang` core example):
+
+```
+iemail init test multilang
+```
 
 
 ### Compile project
@@ -167,13 +188,20 @@ Compiles project with specified `project_name`. Options:
 - `-w` (`--watch`): watch mode - starts watching your project dir and compiles on any change
 - `-o` (`--output`): output mode - minified (m) or formatted with indentation (f)
 
+Example (compiles and then watches `test` project for changes):
+
+```
+iemail compile test -w
+```
+
+
 
 ### Send test email(s)
 ```
 iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [--minified] [-i interval_ms] [--errorstop]
 ```
 
-Sends test email(s) for the specified `project_name`. All images are converted and embedded as cids. SMTP and default options are set in the configuration file.
+Sends test email(s) for the specified `project_name`. All images are converted and embedded as cids. **SMTP and default options are set in the configuration file.**
 
 Options:
 - `-s` (`--script`): script name, defaults to `script`
@@ -189,6 +217,12 @@ Options:
   - `log-fail.txt`: (optionally) addresses to which sending failed
 - `-i` (`--interval`): interval in ms between sending each email, defaults to 1000
 - `--errorstop`: quits on error
+
+Example (sends `test` project to test@example.com):
+
+```
+iemail send test -t test@example.com
+```
 
 
 <br>
@@ -321,13 +355,15 @@ All most recent options are described in the master file. You can change (among 
 
 ### Starting a new project
 
-Create your project directory and run the `init` command in it. Only **for the first time**:
+To create your a directory where you will keep your projects in, use the `create` command:
 
 ```
-iemail init my_project_name -c
+iemail create my_projects
 ```
 
-By using the `-c` option, the `_custom` folder will also be created. For further runs, use just:
+This will create a directory named `my_projects` with custom config and plugins folder.
+
+Then, go to this folder and run `init` command:
 
 ```
 iemail init my_project_name
@@ -336,10 +372,10 @@ iemail init my_project_name
 By default, the base (copy source) project is the `plain` sample from the core (unless you create own `plain` project, then it will be the default for bootstraping). You can specify base project by the second parameter:
 
 ```
-iemail init my_project_name base_project_name
+iemail init my_project_name other_project_name
 ```
 
-If the base project is not found in the current directory, it will be searched in the core `sample` directory.
+If the base project is not found in the current directory, it will be searched in the framework core `sample` directory.
 
 
 After initialization, run compiler in watch mode:

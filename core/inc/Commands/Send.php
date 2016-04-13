@@ -31,7 +31,7 @@ class Send extends Command
 	{
 		$this
 			->setName('send')
-			->setDescription('Send a test email or from mailing list')
+			->setDescription('Sends a test email or from mailing list')
 			->addArgument(
 				'project',
 				InputArgument::REQUIRED,
