@@ -1,7 +1,7 @@
 {
 	"name": "implico/email-framework",
 	"description": "Email coding framework based on Smarty",	
-	"version": "1.2.1",
+	"version": "1.2.2",
 	
 	"require": {
 		"smarty/smarty": "3.*.*",

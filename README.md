@@ -288,7 +288,7 @@ Specify width, height, font sizes without units.
 
 ### Tr
 ```smarty
-{tr id=false class=false attrs=false}
+{tr style=false id=false class=false attrs=false}
 ```
 
 ### Td

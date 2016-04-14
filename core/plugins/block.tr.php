@@ -22,6 +22,7 @@ function smarty_block_tr($params, $content, Smarty_Internal_Template $template, 
   $par->setParams(
     [],
     [
+      'style' => false,
       'id' => false,
       'class' => false,
       'attrs' => false
@@ -31,9 +32,8 @@ function smarty_block_tr($params, $content, Smarty_Internal_Template $template, 
   // only output on the closing tag
   if (!$repeat) {
     if (isset($content)) {
-
       $ret .= "<tr";
-      $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);      
+      $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs'], $par['style']);
       $ret .= ">{$content}</tr>";
 
       return $ret;
