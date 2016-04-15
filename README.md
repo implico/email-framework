@@ -89,7 +89,6 @@ The code is converted (may vary according to the actual settings) to:
     <p>
       Of course, you can use your own markup or easily create custom Smarty plugins, like {h1}Header{/h1}.
     </p>
-        
   </body>
 </html>
 ```
@@ -111,7 +110,7 @@ To use the framework you need the following software:
 - Windows
   1. unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 5.6.x Non Thread Safe Zip - rather that 7.x) into `c:\PHP`
   2. add `c:\PHP` to your [PATH][windows-path] environment variable
-  3. edit `c:\PHP\php.ini`, uncomment:
+  3. rename `c:\PHP\php.ini-development` to `php.ini`, edit and uncomment:
     - `extension_dir = "ext"`
     - `extension=php_mbstring.dll`
     - `extension=php_openssl.dll` 
@@ -165,7 +164,9 @@ iemail create email-projects
 iemail init project_name [base_project_name]
 ```
 
-Creates a new project with specified `project_name`. Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the core framework `samples`.
+Creates a new project with specified `project_name`. Run it in the directory created with `create` command.
+
+Contents of the `base_project_name` are copied into a new directory. First, the script searches for it in the current working directory, then in the core framework `samples`.
 
 Options:
 - `base_project_name`: enter the name of the base project to copy; defaults to `plain`
@@ -286,7 +287,7 @@ Specify width, height, font sizes without units.
 
 ### Tr
 ```smarty
-{tr id=false class=false attrs=false}
+{tr style=false id=false class=false attrs=false}
 ```
 
 ### Td
@@ -355,7 +356,7 @@ All most recent options are described in the master file. You can change (among 
 
 ### Starting a new project
 
-To create your a directory where you will keep your projects in, use the `create` command:
+To create a directory where you will keep your projects, use the `create` command:
 
 ```
 iemail create my_projects
@@ -363,7 +364,7 @@ iemail create my_projects
 
 This will create a directory named `my_projects` with custom config and plugins folder.
 
-Then, go to this folder and run `init` command:
+Then, go to this directory and run the `init` command:
 
 ```
 iemail init my_project_name
@@ -404,7 +405,7 @@ Presents the way to build a responsive (in fact - fluid) project. Notes:
 
 
 ### Multilang
-Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that the layout file (`layout.tpl`) is extended by language scripts, in this case `en.tpl` and `pl.tpl`. See the [Smarty template inheritance docs](http://www.smarty.net/inheritance) for more information.
+Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that the layout template (`layout.tpl`) is extended by language scripts (see [Smarty template inheritance](http://www.smarty.net/inheritance)), in this case `en.tpl` and `pl.tpl`.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
 
@@ -436,8 +437,8 @@ To use the framework in your own PHP scripts:
 
 - load config file(s)
   ```php
-  $smarty->configLoad(path_to_config_file1);
-  $smarty->configLoad(path_to_config_file2);
+  $smarty->configLoad(path_to_config_file1);  //first one should be the core config, e.g. __DIR__.'/vendor/email-framework/core/config.conf'
+  $smarty->configLoad(path_to_config_file2);  //project or script-specific config files
   ```
 
 - set directories the templates are referring to, like this:
@@ -483,6 +484,7 @@ To use the framework in your own PHP scripts:
   - auto-refresh by [Browsersync](https://www.browsersync.io/)
   - use some of useful plugins
 - add optional compression support (ImageMagick)
+- error handling when one of required project subdirectories does not exist
 - create a [Node.js][nodejs] version (using [NSmarty][nsmarty])
 
 

@@ -16,24 +16,25 @@ class Smarty
     return preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!' , '' , $content);
   }
 
-  public static function getAttrs($id = '', $class = '', $attrs = '')
+  public static function getAttrs($id = '', $class = '', $attrs = '', $style = '')
   {
 
     $ret = '';
 
-    if ($id || $class || $attrs) {
+    if ($id) {
+      $ret .= ' id="' . $id . '"';
+    }
 
-      if ($id) {
-        $ret .= ' id="' . $id . '"';
-      }
+    if ($class) {
+      $ret .= ' class="' . $class . '"';
+    }
 
-      if ($class) {
-        $ret .= ' class="' . $class . '"';
-      }
+    if ($style) {
+      $ret .= ' style="' . $style . '"';
+    }
 
-      if ($attrs) {
-        $ret .= ' ' . $attrs;
-      }
+    if ($attrs) {
+      $ret .= ' ' . $attrs;
     }
 
     return $ret;
