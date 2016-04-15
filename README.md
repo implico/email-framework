@@ -406,7 +406,7 @@ Presents the way to build a responsive (in fact - fluid) project. Notes:
 
 
 ### Multilang
-Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that `script.tpl` is extended by language scripts (see [Smarty template inheritance](http://www.smarty.net/inheritance), in this case `en.tpl` and `pl.tpl`.
+Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that `script.tpl` is extended by language scripts (see [Smarty template inheritance](http://www.smarty.net/inheritance)), in this case `en.tpl` and `pl.tpl`.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
 
