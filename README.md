@@ -111,7 +111,7 @@ To use the framework you need the following software:
 - Windows
   1. unpack the [downloaded PHP archive](http://windows.php.net/download/) (e.g. PHP 5.6.x Non Thread Safe Zip - rather that 7.x) into `c:\PHP`
   2. add `c:\PHP` to your [PATH][windows-path] environment variable
-  3. edit `c:\PHP\php.ini`, uncomment:
+  3. rename `c:\PHP\php.ini-development` to `php.ini`, edit and uncomment:
     - `extension_dir = "ext"`
     - `extension=php_mbstring.dll`
     - `extension=php_openssl.dll` 
