@@ -244,7 +244,7 @@ Other dirs contain per project files. Each of them has the following structure:
   - `configs`: configuration for the whole project and for particular scripts
   - `views`: view templates:
     - `layout.tpl`: the main view (layout) file
-    - `scripts`: if you want to have multiple views for one main layout (which differ in language or some details like colors, graphics), place them here; by default, there is only one script: `script.tpl`
+    - `scripts`: if you want to have multiple views for one main layout (which differ in language or some details like colors, graphics), place them here; by default, there is only one script: `script.tpl`; see the [Multilang](#multilang) example for use case
   - `styles`: CSS styles (as Smarty templates, so you can e.g. access config variables)
     - `layout.tpl`: main styles included in your view layout template (you can rename or create new ones)
     - `inline.tpl`: styles to put inline with [CssToInlineStyles](https://github.com/tijsverkoyen/CssToInlineStyles) (you cannot rename it, but can include other templates from within)
@@ -404,7 +404,7 @@ Presents the way to build a responsive (in fact - fluid) project. Notes:
 
 
 ### Multilang
-Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that `script.tpl` is extended by language scripts, in this case `en.tpl` and `pl.tpl`.
+Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that the layout file (`layout.tpl`) is extended by language scripts, in this case `en.tpl` and `pl.tpl`. See the [Smarty template inheritance docs](http://www.smarty.net/inheritance) for more information.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
 
