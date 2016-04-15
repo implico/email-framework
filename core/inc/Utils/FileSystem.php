@@ -31,7 +31,7 @@ class FileSystem
             break;
         } 
         else { 
-          if (!($ret = copy($src . '/' . $file,$dst . '/' . $file)))
+          if (!($ret = @copy($src . '/' . $file,$dst . '/' . $file)))
             break;
         } 
       } 

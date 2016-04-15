@@ -62,8 +62,8 @@ class Create extends Command
       exit(1);
     }
 
-    if (!mkdir($dir)) {
-      $output->writeln('<fg=red>ERROR: failed to create directory  "' . $dirName . '"</fg=red>');
+    if (!@mkdir($dir)) {
+      $output->writeln('<fg=red>ERROR: failed to create directory "' . $dirName . '" (exists/permissions?)</fg=red>');
       exit(1);
     }
 
@@ -72,7 +72,7 @@ class Create extends Command
       $output->writeln('<fg=red>ERROR: custom config directory initialization failed</fg=red>');
       exit(1);
     }
-    if (!copy(IE_CORE_DIR . 'config.conf', $dir . IE_CUSTOM_DIR_NAME . DIRECTORY_SEPARATOR . 'config.conf')) {
+    if (!@copy(IE_CORE_DIR . 'config.conf', $dir . IE_CUSTOM_DIR_NAME . DIRECTORY_SEPARATOR . 'config.conf')) {
       $output->writeln('<fg=red>ERROR: failed to copy master config file to custom config directory</fg=red>');
       exit(1);
     }

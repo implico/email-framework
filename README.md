@@ -89,7 +89,6 @@ The code is converted (may vary according to the actual settings) to:
     <p>
       Of course, you can use your own markup or easily create custom Smarty plugins, like {h1}Header{/h1}.
     </p>
-        
   </body>
 </html>
 ```
