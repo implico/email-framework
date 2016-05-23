@@ -138,6 +138,7 @@ To use the framework you need the following software:
   And then:
   - Windows: follow [the instructions][windows-path]
   - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
+
 4. You can now start a new project - see the [examples section](#examples) to find out more.
 
 
