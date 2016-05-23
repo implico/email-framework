@@ -366,10 +366,10 @@ All most recent options are described in the master file. You can change (among 
 To create a directory where you will keep your projects, use the `create` command:
 
 ```
-iemail create my_projects
+iemail create email-projects
 ```
 
-This will create a directory named `my_projects` with custom config and plugins folder.
+This will create a directory named `email-projects` with custom config and plugins folder.
 
 Then, go to this directory and run the `init` command:
 
