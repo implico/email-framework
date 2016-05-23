@@ -124,15 +124,18 @@ To use the framework you need the following software:
 ### Framework installation
 
 1. open a console/terminal window
-2. go to the folder you want to keep the framework core files (don't create a subdirectory, [Composer][composer] will do this for you)
-3. run:
+2. run:
   ```
-  composer create-project implico/email-framework
+  composer global require implico/email-framework
   ```
-4. add the newly created folder to your PATH variable:
-  - [Windows instruction][windows-path]
-  - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
-5. you can now start a new project - see the [examples section](#examples) to find out more
+3. add the Composer's global bin folder to your PATH variable:
+  - Windows:
+    - run `composer global config bin-dir --absolute` to get the path
+    - follow [the instructions][windows-path]
+  - Linux:
+    - run `php composer.phar global config bin-dir --absolute` to get the path
+    - edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
+4. you can now start a new project - see the [examples section](#examples) to find out more
 
 
 
