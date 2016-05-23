@@ -146,7 +146,7 @@ To use the framework you need the following software:
 <br>
 ## CLI
 
-The global executable is named `iemail`, it just runs `php email.php` and passes all the parameters. Run it from your projects dir (e.g. `email-projects`).
+The global executable is named `iemail`. Run it from your projects dir (e.g. `email-projects`).
 
 
 ### Initialize projects directory

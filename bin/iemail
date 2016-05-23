@@ -1,4 +1,0 @@
-#!/bin/sh
-
-basedir=`dirname "$0"`
-php "$basedir/iemail.php" "$@"
