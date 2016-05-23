@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env php
 
-basedir=`dirname "$0"`
-php "$basedir/iemail.php" "$@"
+<?php
+
+require_once(__DIR__ . '/iemail.php');
