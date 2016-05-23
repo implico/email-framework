@@ -125,13 +125,16 @@ To use the framework you need the following software:
 
 1. Open a console/terminal window.
 2. Run:
+
   ```
   composer global require implico/email-framework
   ```
 3. Add the Composer's global bin folder to your PATH variable. First, to get the path, run: 
+
   ```
   composer global config bin-dir --absolute
   ```
+
   And then:
   - Windows: follow [the instructions][windows-path]
   - Linux: edit the `/etc/environment` file (or `/etc/profile` if you don't see the PATH definition there) as a root user and restart system
