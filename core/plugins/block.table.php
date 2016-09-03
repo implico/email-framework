@@ -63,7 +63,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
       }
       $style .= SmartyUtils::addCss('bgcolor', $par['bgcolor']);
       if ($par['border']) {
-        $style .= "border:{$border}px solid ";
+        $style .= "border:{$par['border']}px solid ";
         if ($par['bordercolor']) {
           $style .= $par['bordercolor'];
         }
