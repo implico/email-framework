@@ -74,14 +74,12 @@ class Sender
 		
 		$smarty->configLoad(IE_CORE_DIR.'config.conf');
 		
-		//load core config file
-		$smarty->configLoad(IE_CORE_DIR.'config.conf');
-		
 		//load optional master config file
 		$customConf = IE_CUSTOM_DIR.'config.conf';
-		if (file_exists($customConf))
+		if (file_exists($customConf)) {
 			$smarty->configLoad($customConf);
-		
+		}
+
 		
 		//load project config file
 		$configFile = $this->config['configsDir'] . 'config.conf';
@@ -172,15 +170,18 @@ class Sender
 	}
 	
 	
-	public function run($callback = null)
+	public function run($callbackInit = null, $callback = null)
 	{
 		$ret = array('error' => false, 'count' => 0, 'message' => '', 'sent' => array(), 'left' => array());
-		
+
 		$file = $this->config['outputsDir'] . $this->script . ($this->useMinified ? '.min' : '') . '.html';
 		if ($content = @file_get_contents($file)) {
 			
 			$this->configureMailer($content);
 			
+			if ($callbackInit) {
+				$callbackInit($this->mailer);
+			}
 			//file_put_contents($this->config['senderDir'] . 'text.html', $content);
 			
 			foreach ($this->toAddress as $toAddress) {

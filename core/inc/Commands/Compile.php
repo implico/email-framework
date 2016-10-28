@@ -328,5 +328,4 @@ class Compile extends Command
 
 		file_put_contents($filename, $content);
 	}
-		
 }

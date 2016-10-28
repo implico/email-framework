@@ -153,16 +153,21 @@ class Send extends Command
 		);
 		
 		$_this = $this;
-		$result = $sender->run(function($addressTo, $count, $message) use ($_this, $output) {
-			if ($message) {
-				$output->writeln($message);
+		$result = $sender->run(
+			function($mailer) use ($_this, $output) {
+				$output->writeln("Using host: {$mailer->Host}, username: {$mailer->Username}, port: {$mailer->Port}");
+			},
+			function($addressTo, $count, $message) use ($_this, $output) {
+				if ($message) {
+					$output->writeln($message);
+				}
+				else {
+					$output->writeln("$count: $addressTo");
+				}
+				$_this->addLog($addressTo);
 			}
-			else {
-				$output->writeln("$count: $addressTo");
-			}
-			$_this->addLog($addressTo);
-		});
-		
+		);
+			
 		if ($result['error']) {
 			$output->writeln('<fg=red>'.$result['message'].'</fg=red>');
 			if ($this->logLeft) {

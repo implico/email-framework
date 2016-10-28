@@ -44,11 +44,11 @@ function smarty_block_a($params, $content, Smarty_Internal_Template $template, &
         if ($par['textDecoration']) {
           $ret .= "text-decoration:{$par['textDecoration']};text-decoration:{$par['textDecoration']} !important;";
         }
+        if ($par['buttonHeight']) {
+          $ret .= "display:inline-block;mso-line-height-rule:exactly;height:{$par['buttonHeight']}px;max-height:{$par['buttonHeight']}px;line-height:{$par['buttonHeight']}px;line-height:{$par['buttonHeight']}px !important;vertical-align:middle;width:100%;white-space:nowrap;overflow:hidden;text-align:center;";
+        }
         if ($par['style']) {
           $ret .= $par['style'];
-        }
-        if ($par['buttonHeight']) {
-          $ret .= "display:inline-block;mso-line-height-rule:exactly;height:{$par['buttonHeight']}px;max-height:{$par['buttonHeight']}px;line-height:{$par['buttonHeight']}px;line-height:{$par['buttonHeight']}px !important;vertical-align:middle;width:100%;white-space:nowrap;overflow:hidden;";
         }
         $ret .= '"';
       }

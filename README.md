@@ -327,7 +327,22 @@ Notes:
 {a href="" target=#aTarget# textDecoration=#aTextDecoration# buttonHeight=false style=false id=false class=false attrs=false}
 ```
 Notes:
-- `buttonHeight`: if you want to "buttonize" the link, set its height; you should add `sizeForce=true` parameter to the `{font}` used inside this button to prevent font scaling on mobile Gmail apps; you would also probably need to set the button background color on wrapping `{td}`
+- `buttonHeight`: if you want to "buttonize" the link, set its height; you should add `sizeForce=true` parameter to the `{font}` used inside this button to prevent font scaling on mobile Gmail apps; you would also probably need to set the button background color on wrapping `{td}`; see Button plugin for a cross-client solution
+
+
+### Button
+```smarty
+{button href="" width=false height=false bgcolor=false bordercolor=false borderRadius=false centered=true}
+```
+Notes:
+- creates a Microsoft Outlook-compatible button (based on [Bulletproof email buttons](https://buttons.cm/))
+- `centered`: refers to centering of the button content
+- you can nest markup to obtain font styles, e.g.
+```smarty
+{button href="http://example.com/" width=150 height=40 bgcolor="#e10000" borderRadius=10}
+  {font size=14 color="#ffffff" bold=1}See more{/font}
+{/button}
+```
 
 
 ### Image (function)

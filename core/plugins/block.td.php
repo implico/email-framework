@@ -25,7 +25,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
   $par->setParams(
     [],
     [
-      'width' => $smarty->getConfigVars('tableWidth'),
+      'width' => $smarty->getConfigVars('tdWidth'),
       'height' => false,
       'colspan' => 1,
       'align' => $smarty->getConfigVars('tdAlign'),
@@ -50,6 +50,10 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
   if (!$repeat) {
     if (isset($content)) {
 
+      if ($par['width'] === null) {
+        $par['width'] = $smarty->getConfigVars('lWidth');
+      }
+      
       //shorthand
       if ($par['overflow'] === true) {
         $par['overflow'] = 'hidden';

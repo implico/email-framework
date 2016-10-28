@@ -28,14 +28,14 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       'sizeForce' => false,
       'family' => $smarty->getConfigVars('fontFamily'),
       'bold' => false,
-      'b' => false,	//alias for bold
-  		'italic' => false,
-  		'i' => false,	//alias for italic
-  		'underlined' => false,
-  		'u' => false,	//alias for underlined
-  		'centered' => false,
-  		'c' => false,	//alias for centered
-  		'style' => false,
+      'b' => false, //alias for bold
+      'italic' => false,
+      'i' => false, //alias for italic
+      'underlined' => false,
+      'u' => false, //alias for underlined
+      'centered' => false,
+      'c' => false, //alias for centered
+      'style' => false,
       'lineHeight' => false,
       'forceCss' => false
     ]
