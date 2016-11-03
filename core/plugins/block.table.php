@@ -40,7 +40,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
   // only output on the closing tag
   if (!$repeat) {
     if (isset($content)) {
-      if ($par['width'] === null) {
+      if ($par['width'] === "") {
         $par['width'] = $smarty->getConfigVars('lWidth');
       }
   
@@ -70,6 +70,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
         else {
           $style .= '#000';
         }
+        $style .= ';';
       }
 
       $style .= 'border-collapse:collapse;';

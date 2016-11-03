@@ -50,7 +50,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
   if (!$repeat) {
     if (isset($content)) {
 
-      if ($par['width'] === null) {
+      if ($par['width'] === "") {
         $par['width'] = $smarty->getConfigVars('lWidth');
       }
       

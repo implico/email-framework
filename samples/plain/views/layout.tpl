@@ -16,7 +16,7 @@
 		{table width=#lWidth#}
 			{tr}
 				{td width=#lWidth#}
-					
+					{block script}{/block}
 				{/td}
 			{/tr}
 			

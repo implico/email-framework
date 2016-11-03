@@ -514,7 +514,8 @@ To use the framework in your own PHP scripts:
 <br>
 ## Alternatives
 Take a look at other interesting tools and frameworks:
-- [MJML][mjml]
+- [MJML](https://mjml.io/)
+- [Inky](https://foundation.zurb.com/emails/docs/inky.html)
 - [Node Email Templates](https://github.com/niftylettuce/node-email-templates)
 - some [nodeJS modules](https://www.npmjs.com/browse/keyword/premailer)
 
@@ -522,7 +523,6 @@ Take a look at other interesting tools and frameworks:
 
 [composer]: https://getcomposer.org/
 [gulp]: http://gulpjs.com/
-[mjml]: https://mjml.io/
 [nodejs]: https://nodejs.org/
 [nsmarty]: https://github.com/stepofweb/nsmarty
 [php]: http://www.php.net/
