@@ -26,7 +26,7 @@ function smarty_function_margin($params, Smarty_Internal_Template $template)
       'height' => 30,
       'colspan' => 1,
       'bgcolor' => false,
-      'style' => 'line-height:0;',
+      'style' => false,
       'id' => false,
       'class' => false,
       'attrs' => false
