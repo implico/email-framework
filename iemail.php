@@ -19,6 +19,8 @@ if (php_sapi_name() != "cli") {
 define('IE_ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 //core dir
 define('IE_CORE_DIR', IE_ROOT_DIR.'core/');
+//builders dir
+define('IE_BUILDERS_DIR', IE_ROOT_DIR.'builders/');
 //sample dir
 define('IE_SAMPLES_DIR', IE_ROOT_DIR.'samples/');
 //projects dir

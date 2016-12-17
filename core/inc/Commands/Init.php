@@ -21,7 +21,6 @@ use Implico\Email\Utils\FileSystem;
 
 class Init extends Command
 {
-  
   /**
    * Configure parameters
    */

@@ -13,7 +13,6 @@ namespace Implico\Email;
 
 class Sender
 {
-	
 	protected $mailer;
 	protected $config;
 	protected $smarty;
@@ -29,7 +28,7 @@ class Sender
 		$this->setSmarty();
 		
 		$this->data = array();
-		$this->script = $script ? $script : 'script';
+		$this->script = $script ? $script : 'index';
 		
 		if (!$toAddress)
 			$toAddress = $this->smarty->getConfigVars('senderDefaultToAddress');

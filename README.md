@@ -103,6 +103,7 @@ To use the framework you need the following software:
 - [Composer][composer]
   - for Windows, use the installer
   - for Linux, install [globally](https://getcomposer.org/doc/00-intro.md#globally)
+- optionally, if you want to benefit from [gulp], i.e. live browser reload on each change with [Browsersync], you will need to install: [nodejs] and of course [gulp] (the new proper way, by gulp-cli)
 
 
 ### PHP installation
@@ -203,7 +204,6 @@ iemail compile test -w
 ```
 
 
-
 ### Send test email(s)
 ```
 iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [--minified] [-i interval_ms] [--errorstop]
@@ -231,6 +231,32 @@ Example (sends `test` project to test@example.com):
 ```
 iemail send test -t test@example.com
 ```
+
+<a name="gulp-integration"></a>
+### Gulp integration
+
+The newly initialized project directory comes with `package.json` and `gulpfile.js`, allowing you to use the [gulp] watch and [Browsersync] live browser reload on each source code change. Technically, the watcher just executes the compiler in a normal way and then refreshes the browser.
+
+For the first run, after using `iemail create`, enter the new project directory and execute (assuming [nodejs] and [gulp] are already installed):
+
+```
+npm install
+```
+
+Then you can use a simple gulp api:
+
+```
+gulp -p project_name [-s script_name] [-a] [-r]
+```
+
+Compiles a project and opens a web browser. Then watches the project, compiling and reloading the browser on changes.
+
+Options:
+- `-p` (`--project`): project name (required)
+- `-s` (`--script`): script name, if not specified, all scripts are listed in the browser
+- `-a` (`--params`): additional parameters passed to the compile command, e.g. `gulp -p sample -a ' -om'` will produce the minified version (note the leading space)
+- `-r` (`--resume`): prevents new browser window to be opened
+
 
 
 <br>
@@ -407,6 +433,8 @@ iemail compile my_project_name -w
 ```
 Open the script HTML file located in your project `outputs` directory. Refresh on every compilation to see the changes.
 
+Alternatively, use the more convenient [gulp integration guide](#gulp-integration) to watch for changes.
+
 
 ### Plain
 This is a plain, bootstrap project. Includes only a layout with the main table defined.
@@ -501,13 +529,11 @@ To use the framework in your own PHP scripts:
 <br>
 ## TODO
 
-- integration with [gulp] for:
+[x] integration with [gulp] for:
   - more optimized watch
-  - auto-refresh by [Browsersync](https://www.browsersync.io/)
-  - use some of useful plugins
-- add optional compression support (ImageMagick)
-- error handling when one of required project subdirectories does not exist
-- create a [Node.js][nodejs] version (using [NSmarty][nsmarty])
+  - auto-refresh by [Browsersync]
+[ ] use of [TinyPNG](https://tinypng.com/)
+[ ] error handling when one of required project subdirectories does not exist
 
 
 
@@ -520,7 +546,7 @@ Take a look at other interesting tools and frameworks:
 - some [nodeJS modules](https://www.npmjs.com/browse/keyword/premailer)
 
 
-
+[Browsersync]: https://www.browsersync.io/
 [composer]: https://getcomposer.org/
 [gulp]: http://gulpjs.com/
 [nodejs]: https://nodejs.org/

@@ -23,7 +23,6 @@ class Send extends Command
 	
 	protected $logContent, $logSent, $logLeft;
 	
-	
 	/**
 	 * Configure parameters
 	 */
@@ -41,7 +40,7 @@ class Send extends Command
 				'script',
 				's',
 				InputOption::VALUE_REQUIRED,
-				'Script name (\'script\' by default)'
+				'Script name (\'index\' by default)'
 			)
 			->addOption(
 				'dir',

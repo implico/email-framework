@@ -26,7 +26,6 @@ class Compile extends Command
 {
 	protected $config;
 	
-	
 	/**
 	 * Configure parameters
 	 */
@@ -63,7 +62,7 @@ class Compile extends Command
 				'o',
 				InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
 				'Output mode(s): m-minified, f-formatted',
-				array('m', 'f')
+				array('f')
 			)
 		;
 	}
@@ -74,6 +73,8 @@ class Compile extends Command
 	*/
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
+		$ret = true;
+
 		//get project name & set source/output dirs
 		$project = $input->getArgument('project');
 		$this->config = new \Implico\Email\Config($project, $input->getOption('dir'));
@@ -82,7 +83,7 @@ class Compile extends Command
 			switch ($error) {
 				case 'projectNotFound':
 					$output->writeln('<fg=red>ERROR: project directory not found</fg=red>');
-					exit(1);
+					return 1;
 					break;
 			}
 		}
@@ -145,8 +146,9 @@ class Compile extends Command
 			$smarty->configLoad($customConf);
 		
 		//console message for watching
-		if ($watch)
+		if ($watch) {
 			$output->writeln('Watching for changes...');
+		}
 		
 
 		//main loop - watch for changes (or execute once if not watching)
@@ -167,6 +169,8 @@ class Compile extends Command
 		$cssToInlineStyles = new CssToInlineStyles();
 
 		while (true) {
+
+			$ret = true;
 
 			//compile only if not watching or the dirs filestamp changes
 			if (!$watch || ($compileDirStamp != $this->getDirStamp($checkDirs))) {
@@ -268,6 +272,7 @@ class Compile extends Command
 					catch (\Exception $e) {
 						$output->writeln('<fg=red>' . $e->getMessage() . '</fg=red>');
 						$compiledScripts[$i] .= ' <fg=red>(ERROR)</fg=red>';
+						$ret = false;
 					}
 				}
 				
@@ -276,8 +281,9 @@ class Compile extends Command
 			}
 			
 			//break if not watching
-			if (!$watch)
+			if (!$watch) {
 				break;
+			}
 			
 			//calculate dirs filestamp to compare
 			$compileDirStamp = $this->getDirStamp($checkDirs);
@@ -285,6 +291,8 @@ class Compile extends Command
 			//pause
 			usleep(500000);
 		}
+
+		return $ret ? 0 : 1;
 	}
 	
 	/**

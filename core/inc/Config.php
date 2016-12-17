@@ -13,8 +13,6 @@ namespace Implico\Email;
 
 class Config implements \ArrayAccess
 {
-	
-	
 	protected $data;
 	
 	public function __construct($project, $projectsDir = null)

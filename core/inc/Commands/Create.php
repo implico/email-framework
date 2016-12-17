@@ -21,7 +21,6 @@ use Implico\Email\Utils\FileSystem;
 
 class Create extends Command
 {
-  
   /**
    * Configure parameters
    */
@@ -37,7 +36,6 @@ class Create extends Command
       )
     ;
   }
-
 
   /**
    * Execute init command
@@ -67,7 +65,7 @@ class Create extends Command
       exit(1);
     }
 
-    //custom directory init
+    //custom config directory init
     if (!FileSystem::copy(IE_SAMPLES_DIR . IE_CUSTOM_DIR_NAME, $dir . IE_CUSTOM_DIR_NAME/*, ['.gitkeep']*/)) {
       $output->writeln('<fg=red>ERROR: custom config directory initialization failed</fg=red>');
       exit(1);
@@ -76,6 +74,17 @@ class Create extends Command
       $output->writeln('<fg=red>ERROR: failed to copy master config file to custom config directory</fg=red>');
       exit(1);
     }
+
+    //gulp support files
+    if (!@copy(IE_BUILDERS_DIR . 'gulpfile.js', $dir . DIRECTORY_SEPARATOR . 'gulpfile.js')) {
+      $output->writeln('<fg=red>ERROR: failed to copy builder files to projects directory</fg=red>');
+      exit(1);
+    }
+    if (!@copy(IE_BUILDERS_DIR . 'package.json', $dir . DIRECTORY_SEPARATOR . 'package.json')) {
+      $output->writeln('<fg=red>ERROR: failed to copy builder files to projects directory</fg=red>');
+      exit(1);
+    }
+
     $output->writeln('Projects directory "' . $dirName . '" created successfully!');
   }
 }
