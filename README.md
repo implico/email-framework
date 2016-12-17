@@ -212,7 +212,7 @@ iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f
 Sends test email(s) for the specified `project_name`. All images are converted and embedded as cids. **SMTP and default options are set in the configuration file.**
 
 Options:
-- `-s` (`--script`): script name, defaults to `script`
+- `-s` (`--script`): script name, defaults to `index`
 - `-d` (`--dir`): projects directory, defaults to `projects`
 - `-t` (`--toaddress`): target address(es), defaults to configuration settings
 - `-f` (`--toaddressfn`): name of a text file in the project's `sender` directory with target addresses (separate by newline)
@@ -253,7 +253,7 @@ Compiles a project and opens a web browser. Then watches the project, compiling 
 
 Options:
 - `-p` (`--project`): project name (required)
-- `-s` (`--script`): script name, if not specified, all scripts are listed in the browser
+- `-s` (`--script`): script name, defaults to `index`; if not specified (`gulp -p sample -s`), all scripts are listed in the browser
 - `-a` (`--params`): additional parameters passed to the compile command, e.g. `gulp -p sample -a ' -om'` will produce the minified version (note the leading space)
 - `-r` (`--resume`): prevents new browser window to be opened
 

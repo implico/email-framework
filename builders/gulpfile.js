@@ -27,6 +27,7 @@ var cliOptsConfig = {
     resume: 'r'
   },
   default: {
+    script: 'index',
     params: '',
     resume: false
   }
@@ -40,7 +41,6 @@ var options = {
   params: cliOpts.params,
   resume: cliOpts.resume
 }
-console.log(cliOpts);
 options.projectDir = options.rootDir + options.project + '/';
 options.projectOutputsDir = options.projectDir + 'outputs/';
 
