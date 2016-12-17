@@ -277,7 +277,7 @@ class Compile extends Command
 				}
 				
 				//console info message
-				$output->writeln(($watch ? ('#' . ($compileNo++) . ' ') : '') . 'Compiled ' . date('d-m-Y H:i:s') . ' ' . implode(', ', $compiledScripts));
+				$output->writeln('<fg=green>' . ($watch ? ('#' . ($compileNo++) . ' ') : '') . 'Compiled ' . date('d-m-Y H:i:s') . ' ' . implode(', ', $compiledScripts) . '</fg=green>');
 			}
 			
 			//break if not watching
