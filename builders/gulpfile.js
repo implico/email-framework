@@ -46,13 +46,13 @@ options.projectOutputsDir = options.projectDir + 'outputs/';
 
 
 // ---------- TITLE ----------
-() => {
+(() => {
   let title = 'Implico Email Framework: gulp builder';
   console.log(`${chalk.blue(title)}`);
   console.log(`${chalk.blue(Array(title.length + 1).join('*'))}`);
   console.log('Press Ctrl+C to exit');
   console.log('');
-}();
+})();
 
 
 // ---------- LAUNCHER ----------
