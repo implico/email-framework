@@ -28,7 +28,11 @@ function smarty_block_button($params, $content, Smarty_Internal_Template $templa
       'bgcolor' => false,
       'bordercolor' => false,
       'borderRadius' => false,
-      'centered' => true
+      'centered' => true,
+      'style' => false,
+      'id' => false,
+      'class' => false,
+      'attrs' => false
     ]
   );
 
@@ -81,7 +85,11 @@ function smarty_block_button($params, $content, Smarty_Internal_Template $templa
         $innerWithBorder .= SmartyUtils::addCss('border', $par['bordercolor']);
       }
 
-      $innerFinish = "'}" . $content . '{/a}';
+      $innerFinish = 
+        ($par['style'] ? $par['style'] : '') . "' "
+        . ($par['attrs'] ? "attrs='" . $par['attrs'] . "' " : '')
+        . SmartyUtils::getAttrs($par['id'], $par['class']) . "}"
+        . $content . '{/a}';
 
       if ($hasBorder) {
         $innerWithBorder .= SmartyUtils::addCss('mso-hide', 'all');

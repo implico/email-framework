@@ -358,11 +358,11 @@ Notes:
 
 ### Button
 ```smarty
-{button href="" width=false height=false bgcolor=false bordercolor=false borderRadius=false centered=true}
+{button href="" width=false height=false bgcolor=false bordercolor=false borderRadius=false centered=true style=false id=false class=false attrs=false}
 ```
 Notes:
 - creates a Microsoft Outlook-compatible button (based on [Bulletproof email buttons](https://buttons.cm/))
-- `centered`: refers to centering of the button content
+- `centered`: refers to centering of the button content, remember to set `align="center"` for containing `{td}`
 - you can nest markup to obtain font styles, e.g.
 ```smarty
 {button href="http://example.com/" width=150 height=40 bgcolor="#e10000" borderRadius=10}
