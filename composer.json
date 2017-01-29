@@ -1,27 +1,27 @@
 {
-	"name": "implico/email-framework",
-	"description": "Email coding framework based on Smarty",	
-	"version": "1.5.6",
+  "name": "implico/email-framework",
+  "description": "Email coding framework based on Smarty",  
+  "version": "1.5.6",
 
-	"bin": [
-		"iemail"
-	],
-	
-	"require": {
-		"smarty/smarty": "3.*.*",
-		"symfony/console": "2.*",
-		"gajus/dindent": "2.*",
-		"phpmailer/phpmailer": "5.*",
-		"tijsverkoyen/css-to-inline-styles": "1.*"
-	},
+  "bin": [
+    "iemail"
+  ],
+  
+  "require": {
+    "smarty/smarty": "3.*.*",
+    "symfony/console": "2.*",
+    "gajus/dindent": "2.*",
+    "phpmailer/phpmailer": "5.*",
+    "tijsverkoyen/css-to-inline-styles": "1.*"
+  },
 
-	"config": {
-		"vendor-dir": "vendor"
-	},
-	
-	"autoload": {
-		"psr-4": {
-			"Implico\\Email\\": "core/inc/"
-		}
-	}
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  
+  "autoload": {
+    "psr-4": {
+      "Implico\\Email\\": "core/inc/"
+    }
+  }
 }
