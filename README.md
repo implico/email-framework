@@ -341,11 +341,12 @@ Creates a row with specified height.
 
 ### Font
 ```smarty
-{font color=#fontColor# size=#fontSize# sizeForce=false family=#fontFamily# bold=false italic=false underlined=false centered=false style=false id=false class=false attrs=false}
+{font color=#fontColor# size=#fontSize# sizeForce=false family=#fontFamily# bold=false italic=false underlined=false centered=false noWrap=false style=false id=false class=false attrs=false}
 ```
 Notes:
 - `sizeForce`: adds `!important` to CSS `font-size` property value (useful when you don't want the font to be resized on e.g. mobile Gmail apps)
 - `bold`, `italic`, `underlined`, `centered`: have aliases derived from the first letter; set any truthy value, like `{font b=1}`
+- `noWrap` adds styles and replaces content white spaces with `&nbsp;`
 
 
 ### Link

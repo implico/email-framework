@@ -35,6 +35,7 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       'u' => false, //alias for underlined
       'centered' => false,
       'c' => false, //alias for centered
+      'noWrap' => false,
       'style' => false,
       'lineHeight' => false,
       'forceCss' => false
@@ -84,6 +85,10 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       }
 
       $prop = SmartyUtils::addCss('line-height', $par['lineHeight']);
+      if ($par['noWrap']) {
+        $prop .= SmartyUtils::addCss('white-space', 'nowrap');
+      }
+
       $css .= $prop;
       $cssFont .= $prop;
       if ($par['style']) {
@@ -110,6 +115,10 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       if ($useFont) {
         $sizeFont = SmartyUtils::convertFontSize($par['size']);
         $ret .= "<font color=\"{$par['color']}\" size=\"{$sizeFont}\" face=\"{$par['family']}\" style=\"$cssFont\">";
+      }
+
+      if ($par['noWrap']) {
+        $content = preg_replace('/\s+/', '&nbsp;', trim($content));
       }
 
       $ret .= $content;
