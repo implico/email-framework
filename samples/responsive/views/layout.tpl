@@ -17,15 +17,7 @@
 
   <body>
 
-    {* responsive: Outlook max-width hack / BEGIN *}
-    <!--[if (gte mso 9)|(IE)]>
-    {table width=#lWidth#}
-        {tr}
-            {td align=left width=#lWidth#}
-                <![endif]-->
-
-
-    {table style="max-width:"|cat:#lWidth#|cat:"px" id="main-table" class="main-table"}
+    {table maxWidth=#lWidth# id="main-table" class="main-table"}
 
 
       {tr}
@@ -200,16 +192,6 @@
       {margin height=30}
 
     {/table}
-
-
-    {* responsive: Outlook max-width hack / END *}
-    <!--[if (gte mso 9)|(IE)]>
-            {/td}
-        {/tr}
-    {/table}
-    <![endif]-->
-
-
   </body>
 </html>
 {/strip}

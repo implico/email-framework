@@ -315,8 +315,10 @@ Specify width, height, font sizes without units.
 
 ### Table
 ```smarty
-{table width=#tableWidth# cellpadding=0 cellspacing=0 bgcolor=false border=0 bordercolor=false align=#tableAlign# style=false id=false class=false attrs=false}
+{table width=#tableWidth# cellpadding=0 cellspacing=0 bgcolor=false border=0 bordercolor=false align=#tableAlign# maxWidth=false style=false id=false class=false attrs=false}
 ```
+Notes:
+- `maxWidth`: sets the `max-width` style and creates an Outlook-conditional wrapper table
 
 ### Tr
 ```smarty

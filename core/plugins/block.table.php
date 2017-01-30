@@ -30,6 +30,7 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
       'border' => '0',
       'bordercolor' => false,
       'align' => $smarty->getConfigVars('tableAlign'),
+      'maxWidth' => false,
       'style' => false,
       'id' => false,
       'class' => false,
@@ -42,6 +43,17 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
     if (isset($content)) {
       if ($par['width'] === "") {
         $par['width'] = $smarty->getConfigVars('lWidth');
+      }
+
+      $maxWidth = $par['maxWidth'];
+      if ($maxWidth) {
+        $ret .= '
+          <!--[if (gte mso 9)|(IE)]>
+          <table width="' . $maxWidth . '" cellpadding="0" cellspacing="0" border="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+            <tr>
+              <td align="left" valign="top" width="' . $maxWidth . '">
+                <![endif]-->
+        ';
       }
   
       $widthCss = SmartyUtils::unitPx($par['width']);
@@ -81,6 +93,9 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
       if ($par['align'] == 'center') {
         $style .= 'margin-left:auto;margin-right:auto;';
       }
+      if ($maxWidth) {
+        $style .= "max-width:{$maxWidth}px;";
+      }
       if ($par['style']) {
         $style .= $par['style'];
       }
@@ -94,6 +109,15 @@ function smarty_block_table($params, $content, Smarty_Internal_Template $templat
       $ret .= ">";
       $ret .= $content . '</table>';
     
+      if ($maxWidth) {
+        $ret .= "
+          <!--[if (gte mso 9)|(IE)]>
+              </td>
+            </tr>
+          </table>
+          <![endif]-->
+        ";
+      }
       return $ret;
 
     }

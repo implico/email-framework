@@ -9,7 +9,13 @@
     {* uncomment if responsive
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     *}
-    
+    {* uncomment if using CSS
+    <style type="text/css">
+      {include file="[styles]layout.tpl" assign=styles}
+      {SmartyUtils::removeCssComments($styles)|strip}
+    </style>
+    *}
+
   </head>
 
   <body>
