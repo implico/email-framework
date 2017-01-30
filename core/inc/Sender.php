@@ -18,9 +18,9 @@ class Sender
   protected $smarty;
   
   //parameters
-  protected $script, $toAddress, $fromName, $fromAddress, $subject, $useMinified, $interval, $stopOnError;
+  protected $script, $toAddress, $fromName, $fromAddress, $subject, $attachments, $useMinified, $interval, $stopOnError;
   
-  public function __construct($config, $script, $toAddress, $toAddressFilename, $fromName, $fromAddress, $subject, $useMinified, $interval, $stopOnError)
+  public function __construct($config, $script, $toAddress, $toAddressFilename, $fromName, $fromAddress, $subject, $attachments, $useMinified, $interval, $stopOnError)
   {
     $this->mailer = new \PHPMailer();
     $this->config = $config;
@@ -30,10 +30,12 @@ class Sender
     $this->data = array();
     $this->script = $script ? $script : 'index';
     
-    if (!$toAddress)
+    if (!$toAddress) {
       $toAddress = $this->smarty->getConfigVars('senderDefaultToAddress');
-    if (!is_array($toAddress))
+    }
+    if (!is_array($toAddress)){
       $toAddress = explode(',', $toAddress);
+    }
     
     if ($toAddressFilename && file_exists($toAddressFilename)) {
       $toAddress = array_merge(explode(PHP_EOL, file_get_contents($toAddressFilename)), $toAddress);
@@ -43,21 +45,33 @@ class Sender
       return trim(str_replace(' ', '', $val));
     }, $toAddress));
     
-    if (!$fromName)
+    if (!$fromName) {
       $fromName = $this->smarty->getConfigVars('senderFromName');
+    }
     $this->fromName = $fromName;
     
-    if (!$fromAddress)
+    if (!$fromAddress){
       $fromAddress = $this->smarty->getConfigVars('senderFromAddress');
+    }
     
     $this->fromAddress = $fromAddress;
     
-    if (!$subject)
+    if (!$subject) {
       $subject = $this->smarty->getConfigVars('senderSubject');
+    }
     $this->subject = $subject;
+
+    if (!$attachments) {
+      $attachments = array();
+    }
+    else if (!is_array($attachments)) {
+      $attachments = array($attachments);
+    }
+    $this->attachments = $attachments;
     
-    if ($useMinified === null)
+    if ($useMinified === null) {
       $useMinified = $this->smarty->getConfigVars('senderUseMinified');
+    }
     
     $this->useMinified = $useMinified;
     
@@ -157,6 +171,10 @@ class Sender
     {
       $mail->AddEmbeddedImage($c['fname'], $c['cid'], $c['name']);
       $content = str_replace('src="'.$c['replace'].'"', 'src="cid:'.$c['cid'].'"', $content);
+    }
+
+    foreach ($this->attachments as $attachment) {
+      $mail->addAttachment($this->config['outputsDir'] . $attachment);
     }
     
     

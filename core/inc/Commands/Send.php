@@ -79,6 +79,12 @@ class Send extends Command
         'Email subject'
       )
       ->addOption(
+        'attachments',
+        'a',
+        InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+        'Attachments'
+      )
+      ->addOption(
         'minified',
         'm',
         InputOption::VALUE_NONE,
@@ -143,12 +149,11 @@ class Send extends Command
     
     $script = $input->getOption('script');
     
-    
     $sender = new \Implico\Email\Sender(
       $this->config, $script, $input->getOption('toaddress'), $input->getOption('toaddressfn') ? ($this->config['senderDir'] . $input->getOption('toaddressfn')) : '', 
       $input->getOption('fromname'), 
-      $input->getOption('fromaddress'), $input->getOption('subject'), $input->getOption('minified'),
-      $input->getOption('interval'), $input->getOption('errorstop')
+      $input->getOption('fromaddress'), $input->getOption('subject'), $input->getOption('attachments'),
+      $input->getOption('minified'), $input->getOption('interval'), $input->getOption('errorstop')
     );
     
     $_this = $this;

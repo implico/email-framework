@@ -206,7 +206,7 @@ iemail compile test -w
 
 ### Send test email(s)
 ```
-iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [--minified] [-i interval_ms] [--errorstop]
+iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [-a attachment(s)] [--minified] [-i interval_ms] [--errorstop]
 ```
 
 Sends test email(s) for the specified `project_name`. All images are converted and embedded as cids. **SMTP and default options are set in the configuration file.**
@@ -214,11 +214,12 @@ Sends test email(s) for the specified `project_name`. All images are converted a
 Options:
 - `-s` (`--script`): script name, defaults to `index`
 - `-d` (`--dir`): projects directory, defaults to `projects`
-- `-t` (`--toaddress`): target address(es), defaults to configuration settings
+- `-t` (`--toaddress`): target address(es), defaults to configuration settings (for multiple, use: `-t a1@a.com -t a2@a.com`)
 - `-f` (`--toaddressfn`): name of a text file in the project's `sender` directory with target addresses (separate by newline)
 - `--fromname`: from name, defaults to configuration settings
 - `--fromaddress`: from address, defaults to configuration settings
 - `-u` (`--subject`): email subject, defaults to configuration settings
+- `-a` (`--attachments`): attaches one or more files from the output directory (for multiple, use: `-a file1 -a file2`)
 - `-m` (`--minified`): uses minified script version instead of formatted
 - `-l` (`--log`): logs addresses into the project's `sender` directory:
   - `log-done.txt`: addresses to which sending succeeded
