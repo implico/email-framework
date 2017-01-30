@@ -147,7 +147,7 @@ class Sender
     
     //$mail->SMTPDebug = 1;
     
-    $mail->CharSet = $this->smarty->getConfigVars('mEncoding');
+    $mail->CharSet = $this->smarty->getConfigVars('encoding');
 
     $mail->From = $this->fromAddress;
     $mail->FromName = $this->fromName;

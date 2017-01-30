@@ -1,7 +1,7 @@
 {
   "name": "implico/email-framework",
   "description": "Email coding framework based on Smarty",  
-  "version": "1.5.7",
+  "version": "1.5.8",
 
   "bin": [
     "iemail"
