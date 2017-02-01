@@ -536,6 +536,7 @@ To use the framework in your own PHP scripts:
 [x] integration with [gulp] for:
   - more optimized watch
   - auto-refresh by [Browsersync]
+
 [ ] use of [TinyPNG](https://tinypng.com/)
 [ ] error handling when one of required project subdirectories does not exist
 
