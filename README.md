@@ -143,6 +143,12 @@ To use the framework you need the following software:
 4. You can now start a new project - see the [examples section](#examples) to find out more.
 
 
+### Framework update
+
+```
+composer global update implico/email-framework
+```
+
 
 <br>
 ## CLI
