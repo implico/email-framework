@@ -1,4 +1,4 @@
-{extends "script.tpl"}
+{extends "index.tpl"}
 
 {block englishBlock}
 {/block}

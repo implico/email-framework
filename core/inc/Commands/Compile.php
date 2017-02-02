@@ -136,15 +136,6 @@ class Compile extends Command
       'styles' => $this->config['stylesDir']
     ));
     
-    //master config file
-    $smarty->configLoad(IE_CORE_DIR.'config.conf');
-      
-
-    //optional master custom config file
-    $customConf = IE_CUSTOM_DIR.'config.conf';
-    if (file_exists($customConf))
-      $smarty->configLoad($customConf);
-    
     //console message for watching
     if ($watch) {
       $output->writeln('Watching for changes...');
@@ -196,6 +187,16 @@ class Compile extends Command
           $scriptName = substr($script, 0, strrpos($script, '.'));
 
           $smarty->clearConfig();
+          
+          //master config file
+          $smarty->configLoad(IE_CORE_DIR.'config.conf');
+
+          //optional master custom config file
+          $customConf = IE_CUSTOM_DIR.'config.conf';
+          if (file_exists($customConf)) {
+            $smarty->configLoad($customConf);
+          }
+
           if ($loadConfigFile) {
             $smarty->configLoad($configFile);
           }

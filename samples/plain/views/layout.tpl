@@ -6,27 +6,29 @@
     {* charset *}
     <meta http-equiv="Content-Type" content="text/html; charset={#encoding#}" />
     
-    {* uncomment if responsive
+    {* uncomment to test RWD
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     *}
-    {* uncomment if using CSS
+
     <style type="text/css">
       {include file="[styles]layout.tpl" assign=styles}
       {SmartyUtils::removeCssComments($styles)|strip}
     </style>
-    *}
 
   </head>
 
   <body>
+
     {table width=#lWidth#}
       {tr}
         {td width=#lWidth#}
+
           {block script}{/block}
+
         {/td}
       {/tr}
-      
     {/table}
+
   </body>
 </html>
 {/strip}
