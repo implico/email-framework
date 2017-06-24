@@ -568,10 +568,10 @@ To use the framework in your own PHP scripts:
   ```smarty
   {tr}
     {td align=center}
-      &bull;
+      {font}&bull;{/font}
     {/td}
     {td}
-      list item 1
+      {font}list item 1{/font}
     {/td}
   {/tr}
   ```
