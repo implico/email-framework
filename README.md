@@ -95,6 +95,7 @@ The code is converted (may vary according to the actual settings) to:
 
 
 <br>
+
 ## Installation
 
 To use the framework you need the following software:
@@ -145,18 +146,21 @@ To use the framework you need the following software:
 
 ### Framework update
 
+
 ```
 composer global update implico/email-framework
 ```
 
 
 <br>
+
 ## CLI
 
 The global executable is named `iemail`. Run it from your projects dir (e.g. `email-projects`).
 
 
 ### Initialize projects directory
+
 ```
 iemail create projects_dir_name
 ```
@@ -174,6 +178,7 @@ iemail create email-projects
 
 
 ### Initialize new project
+
 ```
 iemail init project_name [base_project_name]
 ```
@@ -193,6 +198,7 @@ iemail init test multilang
 
 
 ### Compile project
+
 ```
 iemail compile project_name [-s script_name(s)] [-d projects_dir] [-w] [-o m|f]
 ```
@@ -211,6 +217,7 @@ iemail compile test -w
 
 
 ### Send test email(s)
+
 ```
 iemail send project_name [-s script_name] [-d projects_dir] [-t address(es)] [-f filename] [--fromname name] [--fromaddress address] [-u subject] [-a attachment(s)] [--minified] [-i interval_ms] [--errorstop]
 ```
@@ -240,6 +247,7 @@ iemail send test -t test@example.com
 ```
 
 <a name="gulp-integration"></a>
+
 ### Gulp integration
 
 The newly initialized project directory comes with `package.json` and `gulpfile.js`, allowing you to use the [gulp] watch and [Browsersync] live browser reload on each source code change. Technically, the watcher just executes the compiler in a normal way and then refreshes the browser.
@@ -267,9 +275,11 @@ Options:
 
 
 <br>
+
 ## Directory structure
 
 ### Framework
+
 The framework directory structure overview:
 
 - `core`: PHP files, Smarty plugins and master config file
@@ -278,6 +288,7 @@ The framework directory structure overview:
 
 
 ### Projects dir
+
 The `_custom` subdirectory contains optional: custom master config file and your own Smarty plugins - place them in the `plugins` directory.
 
 Other dirs contain per project files. Each of them has the following structure:
@@ -293,6 +304,7 @@ Other dirs contain per project files. Each of them has the following structure:
 
 
 <br>
+
 ## Plugin reference
 
 Reference scheme:
@@ -321,6 +333,7 @@ Specify width, height, font sizes without units.
 
 
 ### Table
+
 ```smarty
 {table width=#tableWidth# cellpadding=0 cellspacing=0 bgcolor=false border=0 bordercolor=false align=#tableAlign# maxWidth=false style=false id=false class=false attrs=false}
 ```
@@ -328,11 +341,13 @@ Notes:
 - `maxWidth`: sets the `max-width` style and creates an Outlook-conditional wrapper table
 
 ### Tr
+
 ```smarty
 {tr style=false id=false class=false attrs=false}
 ```
 
 ### Td
+
 ```smarty
 {td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
 ```
@@ -342,6 +357,7 @@ Notes:
 - `overflow`: set to `true` for `hidden` (shorthand)
 
 ### Vertical margin (function)
+
 Creates a row with specified height.
 
 ```smarty
@@ -349,6 +365,7 @@ Creates a row with specified height.
 ```
 
 ### Font
+
 ```smarty
 {font color=#fontColor# size=#fontSize# sizeForce=false family=#fontFamily# bold=false italic=false underlined=false centered=false noWrap=false style=false id=false class=false attrs=false}
 ```
@@ -359,6 +376,7 @@ Notes:
 
 
 ### Link
+
 ```smarty
 {a href="" target=#aTarget# textDecoration=#aTextDecoration# buttonHeight=false style=false id=false class=false attrs=false}
 ```
@@ -367,6 +385,7 @@ Notes:
 
 
 ### Button
+
 ```smarty
 {button href="" width=false height=false bgcolor=false bordercolor=false borderRadius=false centered=true style=false id=false class=false attrs=false}
 ```
@@ -382,6 +401,7 @@ Notes:
 
 
 ### Image (function)
+
 ```smarty
 {img src="" width=false height=false autoSize=#imgAutoSize# alt=#imgAlt# padding=false margin=0 marginV=0 marginH=0 align=false display=#imgDisplay# border=0 bordercolor=false style=false id=false class=false attrs=false}
 ```
@@ -391,12 +411,15 @@ Notes:
 
 
 ### Force strip
+
 To force white space strip (in the formatted version), use the following syntax:
 `#(strip)[stripped_code]#(/strip)`
 
 
 <br>
+
 ## Configuration
+
 Default settings are defined in the master file `core/config.conf`. To change them, edit (if they do not exist - create) the following files:
 - `[projects_dir]/_custom/config.conf`: your custom common config applied to all projects
 - `[projects_dir]/[project_name]/configs/config.conf`: config applied to the project
@@ -410,6 +433,7 @@ All most recent options are described in the master file. You can change (among 
 
 <br>
 <a name="examples"></a>
+
 ## Examples
 
 ### Starting a new project
@@ -447,14 +471,17 @@ Alternatively, use the more convenient [gulp integration guide](#gulp-integratio
 
 
 ### Plain
+
 This is a plain, bootstrap project. Includes only a layout with the main table defined.
 
 
 ### Grid
+
 This shows how to build more complex projects, including lists and buttons.
 
 
 ### Responsive
+
 Presents the way to build a responsive (in fact - fluid) project. Notes:
 - config options `tableWidth` and `tdWidth` are set to 100%
 - layout template:
@@ -465,6 +492,7 @@ Presents the way to build a responsive (in fact - fluid) project. Notes:
 
 
 ### Multilang
+
 Multi-language project presents two ways of defining language-specific content for English and Polish. The concept is that the layout template (`layout.tpl`) is extended by language scripts (see [Smarty template inheritance](http://www.smarty.net/inheritance)), in this case `en.tpl` and `pl.tpl`.
 
 First way is to set script-specific config values in the `configs/scripts` directory, and then just use it like `{#title#}`.
@@ -473,7 +501,9 @@ Second way is to inject content by using blocks in language scripts.
 
 
 <br>
+
 ## Integration
+
 To use the framework in your own PHP scripts:
 - install it with [Composer][composer]
   ```json
@@ -524,19 +554,27 @@ To use the framework in your own PHP scripts:
 
 
 <br>
+
 ## Quick tips
+
 - to create a vertical line (`<hr>`), you can use the following code:
-```smarty
-{margin height=1 bgcolor="#000000"}
-```
+
+  ```smarty
+  {margin height=1 bgcolor="#000000"}
+  ```
+
 - if you have repeated code, take advantage of [functions](http://www.smarty.net/docs/en/language.function.function.tpl); if the code repeats among projects, you can think about creating own plugins ([template functions](http://www.smarty.net/docsv2/en/plugins.functions.tpl) or [block functions](http://www.smarty.net/docsv2/en/plugins.block.functions.tpl))
+
 - set line heights in pixels, rather than percentages or numbers
+
 - to achieve precision, define cell paddings by nesting tables, instead of setting CSS `padding` property
+
 - set a background color on tables, rather than on cells (causes gap lines on iPhones)
 
 
 
 <br>
+
 ## TODO
 
 [x] integration with [gulp] for:
@@ -544,12 +582,15 @@ To use the framework in your own PHP scripts:
   - auto-refresh by [Browsersync]
 
 [ ] use of [TinyPNG](https://tinypng.com/)
+
 [ ] error handling when one of required project subdirectories does not exist
 
 
 
 <br>
+
 ## Alternatives
+
 Take a look at other interesting tools and frameworks:
 - [MJML](https://mjml.io/)
 - [Inky](https://foundation.zurb.com/emails/docs/inky.html)
