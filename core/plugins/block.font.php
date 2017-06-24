@@ -38,7 +38,10 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
       'noWrap' => false,
       'style' => false,
       'lineHeight' => false,
-      'forceCss' => false
+      'forceCss' => false,
+      'id' => false,
+      'class' => false,
+      'attrs' => false
     ]
   );
 
@@ -108,13 +111,21 @@ function smarty_block_font($params, $content, Smarty_Internal_Template $template
 
       $useSpan = $smarty->getConfigVars('fontStyleSpanTag') && ($setCss || $par['forceCss']);
       if ($useSpan) {
-        $ret .= "<span style=\"$css\">";
+        $ret .= "<span style=\"$css\"";
+        if (!$useFont) {
+          $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);
+        }
+        $ret .= '>';
       }
 
       $useFont = $smarty->getConfigVars('fontStyleFontTag');
       if ($useFont) {
         $sizeFont = SmartyUtils::convertFontSize($par['size']);
-        $ret .= "<font color=\"{$par['color']}\" size=\"{$sizeFont}\" face=\"{$par['family']}\" style=\"$cssFont\">";
+        $ret .= "<font color=\"{$par['color']}\" size=\"{$sizeFont}\" face=\"{$par['family']}\" style=\"$cssFont\"";
+        if (!$useSpan) {
+          $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);
+        }
+        $ret .= '>';
       }
 
       if ($par['noWrap']) {

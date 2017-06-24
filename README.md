@@ -381,6 +381,7 @@ Notes:
 {a href="" target=#aTarget# textDecoration=#aTextDecoration# buttonHeight=false style=false id=false class=false attrs=false}
 ```
 Notes:
+- `textDecoration`: use CSS values for `text-decoration` property
 - `buttonHeight`: if you want to "buttonize" the link, set its height; you should add `sizeForce=true` parameter to the `{font}` used inside this button to prevent font scaling on mobile Gmail apps; you would also probably need to set the button background color on wrapping `{td}`; see Button plugin for a cross-client solution
 
 
@@ -561,6 +562,18 @@ To use the framework in your own PHP scripts:
 
   ```smarty
   {margin height=1 bgcolor="#000000"}
+  ```
+
+- to create an unordered list, use `&bull;` entity, e.g.:
+  ```smarty
+  {tr}
+    {td align=center}
+      &bull;
+    {/td}
+    {td}
+      list item 1
+    {/td}
+  {/tr}
   ```
 
 - if you have repeated code, take advantage of [functions](http://www.smarty.net/docs/en/language.function.function.tpl); if the code repeats among projects, you can think about creating own plugins ([template functions](http://www.smarty.net/docsv2/en/plugins.functions.tpl) or [block functions](http://www.smarty.net/docsv2/en/plugins.block.functions.tpl))
