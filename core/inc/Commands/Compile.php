@@ -320,12 +320,20 @@ class Compile extends Command
   /**
    * Saves output to file, including directives
    * 
-   * @param unknown_type $filename
-   * @param unknown_type $content
-   * @param unknown_type $isFormatted
+   * @param string $filename
+   * @param string $content
+   * @param bool $isFormatted
    */
   protected function saveOutput($filename, $content, $isFormatted = false)
   {
+    //create output directory if not exists
+    $dir = pathinfo($filename, PATHINFO_DIRNAME);
+    if (!is_dir($dir)) {
+      if (!mkdir($dir)) {
+        throw new \Exception("Error: Project's outputs directory does not exist, error while creating.");
+      }
+    }
+
     //force strip
     $d = 'strip';
     $r = preg_match_all('/\#\('.$d.'\)(.*?)\#\(\/'.$d.'\)/ims', $content, $fsFound);
