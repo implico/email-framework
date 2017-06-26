@@ -53,7 +53,7 @@ function smarty_block_a($params, $content, Smarty_Internal_Template $template, &
         $ret .= '"';
       }
 
-      $ret .= SmartyUtils::addAttr('target', $par['target'], true);
+      $ret .= SmartyUtils::addAttr('target', $par['target']);
       $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);
 
       $ret .= ">{$content}</a>";
