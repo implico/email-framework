@@ -1,3 +1,5 @@
-{extends "[layouts]layout.tpl"}{block script}
+{extends "[layouts]layout.tpl"}
+
+{block script}
 
 {/block}

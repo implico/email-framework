@@ -1,4 +1,6 @@
-{extends "[layouts]layout.tpl"}{block script}
+{extends "[layouts]layout.tpl"}
+
+{block script}
   {tr}
     {td}
       {font size=32 bold=1}{#title#}{/font}
