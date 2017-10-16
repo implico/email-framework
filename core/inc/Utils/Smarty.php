@@ -16,21 +16,26 @@ class Smarty
     return preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!' , '' , $content);
   }
 
+  public static function addEntities($text)
+  {
+    return htmlentities($text);
+  }
+
   public static function getAttrs($id = '', $class = '', $attrs = '', $style = '')
   {
 
     $ret = '';
 
     if ($id) {
-      $ret .= ' id="' . $id . '"';
+      $ret .= ' id="' . self::addEntities($id) . '"';
     }
 
     if ($class) {
-      $ret .= ' class="' . $class . '"';
+      $ret .= ' class="' . self::addEntities($class) . '"';
     }
 
     if ($style) {
-      $ret .= ' style="' . $style . '"';
+      $ret .= ' style="' . self::addEntities($style) . '"';
     }
 
     if ($attrs) {
@@ -50,7 +55,7 @@ class Smarty
     }
 
     if ($value !== false) {
-      $ret .= " $name=" . ($quotes ? '"' : '') . $value . ($quotes ? '"' : '');
+      $ret .= " $name=" . ($quotes ? '"' : '') . self::addEntities($value) . ($quotes ? '"' : '');
     }
 
     return $ret;
@@ -65,7 +70,7 @@ class Smarty
     }
 
     if ($value !== false) {
-      $ret .= "$name:$value;";
+      $ret .= self::addEntities("$name:$value;");
     }
 
     return $ret;

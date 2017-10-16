@@ -18,7 +18,7 @@ class Sender
   protected $smarty;
   
   //parameters
-  protected $script, $toAddress, $fromName, $fromAddress, $subject, $attachments, $useMinified, $interval, $stopOnError;
+  protected $script, $toAddress, $fromName, $fromAddress, $subject, $attachments, $useMinified, $cidExtensions, $interval, $stopOnError;
   
   public function __construct($config, $script, $toAddress, $toAddressFilename, $fromName, $fromAddress, $subject, $attachments, $useMinified, $interval, $stopOnError)
   {
@@ -72,6 +72,8 @@ class Sender
     if ($useMinified === null) {
       $useMinified = $this->smarty->getConfigVars('senderUseMinified');
     }
+
+    $this->cidExtensions = $this->smarty->getConfigVars('senderCidExtensions');
     
     $this->useMinified = $useMinified;
     
@@ -156,21 +158,36 @@ class Sender
       
     //make cids
     $cids = array();
-    $i = 1;
-    preg_match_all('/\<img.*?src="(.*?)".*?\/?\>/', $content, $imgs);
-    foreach ($imgs[1] as $img)
-    {
-      $fname = $this->config['outputsDir'].(substr($img, 0, 1) == '/' ? substr($img, 1) : $img);
-      $pi = pathinfo($img);
-      $name = $pi['basename'];
-      $cid = 'cid-'.($i++);
-      $cids[$fname] = array('fname' => $fname, 'cid' => $cid, 'name' => $name, 'replace' => $img);
+    if ($this->cidExtensions) {
+      $cidFiles = glob($this->config['outputsDir'] . '*.{' . $this->cidExtensions . '}', GLOB_BRACE);
+      $cids = array_map(function ($cidFile, $index) {
+        $basename = pathinfo($cidFile, PATHINFO_BASENAME);
+        return array(
+          'fname' => $cidFile,
+          'cid' => 'cid-' . ($index + 1),
+          'name' => urlencode($basename),
+          'replace' => $basename
+        );
+      }, $cidFiles, array_keys($cidFiles));
     }
+    // $i = 1;
+    // preg_match_all('/\<img.*?src="(.*?)".*?\/?\>/', $content, $imgs);
+    // foreach ($imgs[1] as $img)
+    // {
+    //   $fname = $this->config['outputsDir'].(substr($img, 0, 1) == '/' ? substr($img, 1) : $img);
+    //   $pi = pathinfo($img);
+    //   $name = $pi['basename'];
+    //   $cid = 'cid-'.($i++);
+    //   $cids[$fname] = array('fname' => $fname, 'cid' => $cid, 'name' => $name, 'replace' => $img);
+    // }
     
     foreach ($cids as $c)
     {
       $mail->AddEmbeddedImage($c['fname'], $c['cid'], $c['name']);
-      $content = str_replace('src="'.$c['replace'].'"', 'src="cid:'.$c['cid'].'"', $content);
+      // $content = str_replace('src="'.$c['replace'].'"', 'src="cid:'.$c['cid'].'"', $content);
+      $cidReference = 'cid:' . $c['cid'];
+      $content = str_replace('"' . $c['replace'] . '"', '"' . $cidReference . '"', $content);
+      $content = str_replace('url(' . $c['replace'] . ')', 'url(' . $cidReference . ')', $content);
     }
 
     foreach ($this->attachments as $attachment) {

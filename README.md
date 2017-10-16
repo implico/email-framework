@@ -349,9 +349,10 @@ Notes:
 ### Td
 
 ```smarty
-{td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
+{td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false background=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
 ```
 Notes:
+- when using `background` (image), you will probably want to set a fallback color with `bgcolor`; note that background images embedded as cids seem not to work with Gmail mobile app (but do work when referencing external URLs)
 - `padding`: set as a CSS `padding` property value, e.g. `10px 20px`
 - `noFont`: blocks applying font styles even if `fontStyleTdTag` config value is set to `true`
 - `overflow`: set to `true` for `hidden` (shorthand)
@@ -578,9 +579,14 @@ To use the framework in your own PHP scripts:
 
 - if you have repeated code, take advantage of [functions](http://www.smarty.net/docs/en/language.function.function.tpl); if the code repeats among projects, you can think about creating own plugins ([template functions](http://www.smarty.net/docsv2/en/plugins.functions.tpl) or [block functions](http://www.smarty.net/docsv2/en/plugins.block.functions.tpl))
 
-- set line heights in pixels, rather than percentages or numbers
+- set line heights in pixels, rather than percentages or numbers (Outlook will treat it as pixels); if a Gmail mobile app wrongly converts it on small screens, target such more modern clients in the CSS by a media query and apply a patch, e.g.
+  ```css
+  @media all {
+    #footer { line-height: 1.4; }
+  }
+  ```
 
-- to achieve precision, define cell paddings by nesting tables, instead of setting CSS `padding` property
+- to achieve precision (and avoid Outlook bugs in certain cases), define cell paddings by nesting tables, instead of setting CSS `padding` property
 
 - set a background color on tables, rather than on cells (causes gap lines on iPhones)
 

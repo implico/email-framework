@@ -33,6 +33,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       'padding' => 0,
       'overflow' => $smarty->getConfigVars('tdOverflow'),
       'bgcolor' => false,
+      'background' => false,
       'lineHeight' => $smarty->getConfigVars('tdLineHeight'),
       'borderRadius' => false,
       'noFont' => $noFont,
@@ -62,6 +63,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       $ret .= "<td";
       $ret .= SmartyUtils::addAttr('width', $par['width']);
       $widthCss = SmartyUtils::unitPx($par['width']);
+      $heightCss = SmartyUtils::unitPx($par['height']);
 
       $ret .= SmartyUtils::addAttr('height', $par['height']);
       if ($par['colspan'] > 1)
@@ -70,11 +72,16 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       $ret .= SmartyUtils::addAttr('align', $par['align']);
       $ret .= SmartyUtils::addAttr('bgcolor', $par['bgcolor']);
 
+      $background = $par['background'];
+      if ($background !== false) {
+        $ret .= SmartyUtils::addAttr('background', $par['background']);
+      }
+
       $style = '';
       if ($repeatCss) {
         $style .= SmartyUtils::addCss('width', $widthCss);
         if ($par['height'] !== false) {
-          $style .= SmartyUtils::addCss('height', $par['height'] . 'px');
+          $style .= SmartyUtils::addCss('height', $heightCss);
         }
         $style .= SmartyUtils::addCss('vertical-align', $par['valign']);
         $style .= SmartyUtils::addCss('text-align', $par['align']);
@@ -88,7 +95,9 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
         $style .= SmartyUtils::addCss('padding', $par['padding']);
       }
       $style .= SmartyUtils::addCss('overflow', $par['overflow']);
-      $style .= SmartyUtils::addCss('background', $par['bgcolor']);
+      if ($background === false) {
+        $style .= SmartyUtils::addCss('background', $par['bgcolor']);
+      }
       $style .= SmartyUtils::addCss('line-height', $par['lineHeight']);
       $style .= SmartyUtils::addCss('border-radius', $par['borderRadius']);
       $style .= SmartyUtils::addCss('font-family', $par['fontFamily']);
@@ -106,7 +115,33 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
 
       $ret .= SmartyUtils::getAttrs($par['id'], $par['class'], $par['attrs']);
 
-      $ret .= ">{$content}</td>";
+      $ret .= ">";
+
+      if ($background !== false) {
+        $ret .= '
+          <!--[if gte mso 9]>
+          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="' .
+            SmartyUtils::addCss('width', $widthCss) . SmartyUtils::addCss('height', $heightCss) . '">
+            <v:fill type="tile" src="'. SmartyUtils::addEntities($background) .'" ' . 
+            ($par['bgcolor'] !== false ? ('color="' . SmartyUtils::addEntities($par['bgcolor']) . '" ') : '') .
+            '/>
+            <v:textbox inset="0,0,0,0">
+          <![endif]-->
+        ';
+      }
+
+      $ret .= $content;
+
+      if ($background !== false) {
+        $ret .= '
+          <!--[if gte mso 9]>
+          </v:textbox>
+          </v:rect>
+          <![endif]-->
+        ';
+      }
+
+      $ret .= "</td>";
 
       return $ret;
 
