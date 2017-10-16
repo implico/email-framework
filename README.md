@@ -349,7 +349,7 @@ Notes:
 ### Td
 
 ```smarty
-{td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false background=false lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
+{td width=#tdWidth# height=false colspan=1 align=#tdAlign# valign=#tdValign# padding=0 overflow=#tdOverflow# bgcolor=false background=false backgroundNoRepeat=true lineHeight=#tdLineHeight# borderRadius=false noFont=!#fontStyleTdTag# fontFamily=#fontFamily# fontSize=#fontSize# fontColor=#fontColor# style=false id=false class=false attrs=false}
 ```
 Notes:
 - when using `background` (image), you will probably want to set a fallback color with `bgcolor`; note that background images embedded as cids seem not to work with Gmail mobile app (but do work when referencing external URLs)

@@ -34,6 +34,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       'overflow' => $smarty->getConfigVars('tdOverflow'),
       'bgcolor' => false,
       'background' => false,
+      'backgroundNoRepeat' => true,
       'lineHeight' => $smarty->getConfigVars('tdLineHeight'),
       'borderRadius' => false,
       'noFont' => $noFont,
@@ -73,6 +74,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       $ret .= SmartyUtils::addAttr('bgcolor', $par['bgcolor']);
 
       $background = $par['background'];
+      $backgroundNoRepeat = $par['backgroundNoRepeat'];
       if ($background !== false) {
         $ret .= SmartyUtils::addAttr('background', $par['background']);
       }
@@ -98,6 +100,12 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       if ($background === false) {
         $style .= SmartyUtils::addCss('background', $par['bgcolor']);
       }
+      if ($background !== false) {
+        if ($backgroundNoRepeat) {
+          $style .= SmartyUtils::addCss('background-repeat', 'no-repeat');
+          $style .= SmartyUtils::addCss('background-size', '100% auto');
+        }
+      }
       $style .= SmartyUtils::addCss('line-height', $par['lineHeight']);
       $style .= SmartyUtils::addCss('border-radius', $par['borderRadius']);
       $style .= SmartyUtils::addCss('font-family', $par['fontFamily']);
@@ -122,7 +130,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
           <!--[if gte mso 9]>
           <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="' .
             SmartyUtils::addCss('width', $widthCss) . SmartyUtils::addCss('height', $heightCss) . '">
-            <v:fill type="tile" src="'. SmartyUtils::addEntities($background) .'" ' . 
+            <v:fill type="tile" ' . ($backgroundNoRepeat ? 'size="100%,100%" ' : '') . 'src="'. SmartyUtils::addEntities($background) .'" ' . 
             ($par['bgcolor'] !== false ? ('color="' . SmartyUtils::addEntities($par['bgcolor']) . '" ') : '') .
             '/>
             <v:textbox inset="0,0,0,0">
