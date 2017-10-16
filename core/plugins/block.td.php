@@ -103,7 +103,7 @@ function smarty_block_td($params, $content, Smarty_Internal_Template $template, 
       if ($background !== false) {
         if ($backgroundNoRepeat) {
           $style .= SmartyUtils::addCss('background-repeat', 'no-repeat');
-          $style .= SmartyUtils::addCss('background-size', '100% auto');
+          $style .= SmartyUtils::addCss('background-size', '100% 100%');
         }
       }
       $style .= SmartyUtils::addCss('line-height', $par['lineHeight']);

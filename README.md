@@ -353,6 +353,7 @@ Notes:
 ```
 Notes:
 - when using `background` (image), you will probably want to set a fallback color with `bgcolor`; note that background images embedded as cids seem not to work with Gmail mobile app (but do work when referencing external URLs)
+- `backgroundNoRepeat` causes the background image to fill all the cell space
 - `padding`: set as a CSS `padding` property value, e.g. `10px 20px`
 - `noFont`: blocks applying font styles even if `fontStyleTdTag` config value is set to `true`
 - `overflow`: set to `true` for `hidden` (shorthand)
